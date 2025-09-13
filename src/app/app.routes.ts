@@ -12,7 +12,7 @@ export const routes: Routes = [
      path: 'login',
     pathMatch: 'full',
     loadComponent: () => {
-        return import('./modules/customer/login/login').then((m) => m.Login);
+        return import('./modules/customer/customer-auth/login/login').then((m) => m.Login);
     }
 }
 ];
