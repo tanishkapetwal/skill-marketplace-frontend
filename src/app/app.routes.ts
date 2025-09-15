@@ -14,5 +14,12 @@ export const routes: Routes = [
     loadComponent: () => {
         return import('./modules/customer/customer-auth/login/login').then((m) => m.Login);
     }
+},
+{
+     path: 'student-dashboard',
+    pathMatch: 'full',
+    loadComponent: () => {
+        return import('./modules/customer/dashboard/dashboard').then((m) => m.Dashboard);
+    }
 }
 ];
