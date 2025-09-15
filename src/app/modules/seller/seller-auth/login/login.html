@@ -1,7 +1,8 @@
 <div class="auth-container">
     <div class="auth-box">
+        
         <div class="p-[20px] auth-image">
-            <img src="assets/studentFull.png" alt="Auth Illustration" />
+            <img src="assets/teacher.png" alt="Auth Illustration" />
         </div>
         <div class="card-wrapper">
 
@@ -45,7 +46,7 @@
                 </p>
             </div>
             <div class="card" [class.hidden-card]="isLogin" [class.visible-card]="!isLogin">
-                <h2 class="title">Sign Up</h2>
+                     <h2 class="title">Sign Up</h2>
                 <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)" class="space-y-4 text-[12px]">
 
                     <div>
@@ -60,21 +61,26 @@
                             class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
                             placeholder="john@gmail.com" [(ngModel)]="signupData.email" #email="ngModel">
                     </div>
-
-
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Phone</label>
                         <input required type="text" name="phone"
                             class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
                             placeholder="9876*******" [(ngModel)]="signupData.phone" #phone="ngModel">
                     </div>
+
+
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Password</label>
                         <input required type="password" name="password"
                             class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
                             placeholder="********" [(ngModel)]="signupData.password" #password="ngModel">
                     </div>
-
+                     <div>
+                        <label class="block text-gray-700 font-medium mb-1">Bio</label>
+                        <input required type="text" name="bio"
+                            class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                           placeholder="write something here about you..." [(ngModel)]="signupData.bio" #bio="ngModel">
+                    </div>
                     <div class="text-center">
                         <input type="submit" value="Sign Up"
                             class="w-full p-3 bg-[#a855f7] text-white py-2 rounded-lg 

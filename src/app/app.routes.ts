@@ -9,10 +9,17 @@ export const routes: Routes = [
     }
 },
 {
-     path: 'login',
+     path: 'student/login',
     pathMatch: 'full',
     loadComponent: () => {
         return import('./modules/customer/customer-auth/login/login').then((m) => m.Login);
+    }
+},
+{
+     path: 'teacher/login',
+    pathMatch: 'full',
+    loadComponent: () => {
+        return import('./modules/seller/seller-auth/login/login').then((m) => m.Login);
     }
 },
 {
