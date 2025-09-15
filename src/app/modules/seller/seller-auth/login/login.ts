@@ -35,6 +35,7 @@ loginData = {
         console.log('Login succesful:', res);
 
         localStorage.setItem('token', res.token)
+        this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {
         console.error('Login failed', err);
@@ -48,6 +49,7 @@ loginData = {
         console.log('Signup succesful:', res);
 
         localStorage.setItem('token', res.token)
+        this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {
         console.error('signnup failed', err);
