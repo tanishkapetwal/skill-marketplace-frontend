@@ -3,6 +3,7 @@ import { Dashboard } from './modules/seller/dashboard/dashboard';
 import { Skills } from './modules/seller/skills/skills';
 import { AddToListing } from './modules/seller/add-to-listing/add-to-listing';
 import { OrderRequestsList } from './modules/seller/order-requests-list/order-requests-list';
+import { AcceptRejectOrder } from './modules/seller/accept-reject-order/accept-reject-order';
 
 export const routes: Routes = [
 {
@@ -32,8 +33,11 @@ export const routes: Routes = [
     children: [
         { path: 'skills', component: Skills },
         { path: 'add-to-listing', component: AddToListing },
-        { path: 'order-request', component: OrderRequestsList }
+        { path: 'order-request', component: OrderRequestsList },
+        { path: 'accept-reject-order', component: AcceptRejectOrder }
+
     ]
+    // path: 'teacher-dashboard',
     // pathMatch: 'full',
     // loadComponent: () => {
     //     return import('./modules/seller/dashboard/dashboard').then((m) => m.Dashboard);

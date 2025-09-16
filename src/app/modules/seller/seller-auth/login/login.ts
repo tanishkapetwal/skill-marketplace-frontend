@@ -35,6 +35,7 @@ loginData = {
         console.log('Login succesful:', res);
 
         localStorage.setItem('token', res.token)
+        console.log(localStorage.getItem('token'));
         this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {
@@ -47,8 +48,11 @@ loginData = {
     this.authService.signUp(this.signupData).subscribe({
       next: (res) => {
         console.log('Signup succesful:', res);
+        if(res && res.token){
+          localStorage.setItem('token', res.token)
+        }
 
-        localStorage.setItem('token', res.token)
+        // localStorage.setItem('token', res.token)
         this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {

@@ -1,1 +1,31 @@
-<p>add-to-listing works!</p>
+<div class="container mt-4">
+  <h3>Add Listing for Skill</h3>
+  <form (ngSubmit)="submitListing(listingForm)" #listingForm="ngForm">
+    <div class="form-group mb-3">
+      <label>Skill-Id</label>
+      <input type="number" [(ngModel)]="skillId" name="Skill-Id" class="form-control" required />
+    </div>
+    <div class="form-group mb-3">
+      <label>Title</label>
+      <input type="text" [(ngModel)]="listingData.title" name="title" class="form-control" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Description</label>
+      <textarea [(ngModel)]="listingData.description" name="description" class="form-control" required></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Price</label>
+      <input type="number" [(ngModel)]="listingData.price" name="price" class="form-control" required />
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Time (in hours)</label>
+      <input type="number" [(ngModel)]="listingData.time" name="time" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+    <button type="button" class="btn btn-secondary" (click)="reset(listingForm)">Reset</button>
+  </form>
+</div>

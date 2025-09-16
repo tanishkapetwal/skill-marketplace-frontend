@@ -1,1 +1,25 @@
-<p>order-requests-list works!</p>
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order Id</th>
+                    <th>Order Status</th>
+                    <th>Order Date</th>
+                    <th>Ordered By</th>
+                    <th>Skill Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of SkillsList; track $index){
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.ordersStatus}}</td>
+                    <td>{{item.ordersOrderDate}}</td>
+                    <td>{{item.ordersCustomerUserName}}</td>
+                    <td>{{item.ordersSkillsListingSkillsName}}</td>
+                </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>
