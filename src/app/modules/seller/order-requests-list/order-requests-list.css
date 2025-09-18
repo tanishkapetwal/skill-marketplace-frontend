@@ -46,3 +46,9 @@
 .table tbody tr:nth-child(even) {
   background-color: #fafbff;
 }
+.form-group {
+  padding: 12px 16px;
+  color: black;
+  vertical-align: middle;
+  font-weight: bold;
+}

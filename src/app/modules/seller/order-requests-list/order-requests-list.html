@@ -4,20 +4,25 @@
             <thead>
                 <tr>
                     <th>Order Id</th>
-                    <th>Order Status</th>
                     <th>Order Date</th>
                     <th>Ordered By</th>
                     <th>Skill Name</th>
+                    <th>Current Order Status</th>
                 </tr>
             </thead>
             <tbody>
                 @for(item of SkillsList; track $index){
                 <tr>
                     <td>{{item.id}}</td>
-                    <td>{{item.ordersStatus}}</td>
                     <td>{{item.ordersOrderDate}}</td>
                     <td>{{item.ordersCustomerUserName}}</td>
                     <td>{{item.ordersSkillsListingSkillsName}}</td>
+                    <div class="form-group">
+                        <label for="status">{{item.ordersStatus}}</label>
+                            <select id="status" [(ngModel)]="selectedStatus" (change)="callFunc(item.id)">
+                                <option *ngFor="let status of statuses" value="{{status}}">{{status}}</option>
+                            </select>
+                    </div>
                 </tr>}
             </tbody>
         </table>
