@@ -15,4 +15,8 @@ export class AuthService{
      signUp(data:{name:string; email:string; password:string; phone:string}):Observable<any>{
         return this.http.post<any>(this.apiUrl+'signup', data)
      }
+   //   delete(id:number):Observable<any>{
+
+   //       return  this.http.delete(`http://localhost:8081/seller/delete/${id}`)
+   //   }
 }

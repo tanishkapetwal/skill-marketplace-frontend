@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Listing Id</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Duration Of Teaching</th>
+                    <th>Average Rating</th>
+                    <th>Skills Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Delete Listing</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(item of SkillsList; track $index){
+                <tr>
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.time}}</td>
+                    <td>{{item.avgRating}}</td>
+                    <td>{{item.skillsName}}</td>
+                    <td>{{item.skillsDescription}}</td>
+                    <td>{{item.skillsCategory}}</td>
+                    <td><button type="button" class="btn btn-success" (click)="callFunc(item.id)">Click To Delete</button></td>
+                </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>

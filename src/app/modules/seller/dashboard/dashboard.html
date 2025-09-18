@@ -2,9 +2,12 @@
   <nav class="navbar">
     <div class="navbar-logo">Seller Dashboard</div>
     <ul class="navbar-links">
-      <li><a routerLink="/teacher-dashboard/skills" routerLinkActive="active-link">Skills</a></li>
-      <li><a routerLink="/teacher-dashboard/add-to-listing" routerLinkActive="active-link">Add to Listing</a></li>
-      <li><a routerLink="/teacher-dashboard/order-request" routerLinkActive="active-link">Order Requests</a></li>
+      <li><a routerLink="/teacher-dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >Dashboard</a></li>
+      <li><a routerLink="/teacher-dashboard/skills" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Skills</a></li>
+      <li><a routerLink="/teacher-dashboard/add-to-listing" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >Add to Listing</a></li>
+      <li><a routerLink="/teacher-dashboard/seller-listings" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" >My Listings</a></li>
+      <li><a routerLink="/teacher-dashboard/order-request" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">My Order Requests</a></li>
+      <li><a routerLink="/">LogOut</a></li>
     </ul>
   </nav>
 

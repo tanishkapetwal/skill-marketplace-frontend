@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';    //import formsModule
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-to-listing',
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';    //import formsModule
 export class AddToListing {
 
   skillId: number=0;
+  
   listingData = {
     title: '',
     description: '',
@@ -18,8 +20,15 @@ export class AddToListing {
     time: 0
   };
 
-  constructor( private http: HttpClient) {
+  constructor( private http: HttpClient,private router:Router) {
     const token = localStorage.getItem('token');
+    const nav= this.router.getCurrentNavigation();
+    const data= nav?.extras.state?.['formData'];
+    if(data){
+      this.skillId=data.skillId;
+      this.listingData.title=data.name;
+      this.listingData.description=data.description;
+    }
   }
   reset(form:any){ form.reset();}
   submitListing(form:any) {

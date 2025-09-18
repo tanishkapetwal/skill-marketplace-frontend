@@ -7,6 +7,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th>Add To Listing</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +17,7 @@
                     <td>{{item.name}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.category}}</td>
+                    <td><button type="button" class="btn btn-success" (click)="redirectPage(item.id,item.name,item.description)">Click To Add</button></td>
                 </tr>}
             </tbody>
         </table>

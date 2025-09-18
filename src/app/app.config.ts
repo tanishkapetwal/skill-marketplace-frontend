@@ -8,8 +8,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
-    provideHttpClient(),
+    provideRouter(routes),      // essential for navbar routerLinks
     provideHttpClient(withInterceptors([authInterceptor]))
   ]
 };
