@@ -24,7 +24,7 @@ export class SellerListings {
   
     }
     SkillsList:any[]=[];
-    deleted:any;
+    // deleted:any;
     callFunc(num:number){
       this.http.delete(`http://localhost:8081/seller/delete/${num}`).subscribe({
         next: () => {alert('Deleted successfully!');window.location.reload();},
