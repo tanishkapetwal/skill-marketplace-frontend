@@ -4,6 +4,7 @@ import { Skills } from './modules/seller/skills/skills';
 import { AddToListing } from './modules/seller/add-to-listing/add-to-listing';
 import { OrderRequestsList } from './modules/seller/order-requests-list/order-requests-list';
 import { SellerListings } from './modules/seller/seller-listings/seller-listings';
+import { DashboardLandingPage } from './modules/seller/dashboard-landing-page/dashboard-landing-page';
 
 export const routes: Routes = [
 {
@@ -31,11 +32,12 @@ export const routes: Routes = [
     path: 'teacher-dashboard',
     component: Dashboard,
     children: [
+        { path: '', component: DashboardLandingPage},
         { path: 'skills', component: Skills },
         { path: 'add-to-listing', component: AddToListing },
         { path: 'order-request', component: OrderRequestsList },
-        { path: 'seller-listings', component: SellerListings}
-
+        { path: 'seller-listings', component: SellerListings},
+        { path: 'dashboard-landing-page', component: DashboardLandingPage}
     ]
     // path: 'teacher-dashboard',
     // pathMatch: 'full',

@@ -6,6 +6,7 @@
                     <th>Order Id</th>
                     <th>Order Date</th>
                     <th>Ordered By</th>
+                    <th>Price</th>
                     <th>Skill Name</th>
                     <th>Current Order Status</th>
                 </tr>
@@ -16,6 +17,7 @@
                     <td>{{item.id}}</td>
                     <td>{{item.ordersOrderDate}}</td>
                     <td>{{item.ordersCustomerUserName}}</td>
+                    <td>₹{{item.skillsListingPrice}}</td>
                     <td>{{item.ordersSkillsListingSkillsName}}</td>
                     <div class="form-group">
                         <label for="status">{{item.ordersStatus}}</label>
