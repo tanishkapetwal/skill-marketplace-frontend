@@ -1,11 +1,10 @@
-import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-order-requests-list',
-  imports: [FormsModule, NgFor],
+  imports: [FormsModule],
   templateUrl: './order-requests-list.html',
   styleUrl: './order-requests-list.css'
 })
@@ -23,7 +22,9 @@ export class OrderRequestsList {
   
     }
     SkillsList:any[]=[];
-    statuses: String[]=['PENDING','ACCEPTED','REJECTED','COMPLETED'];
+    statuses: String[]=[/*'PENDING',*/'ACCEPTED','REJECTED',/*'COMPLETED'*/];
+    statuses1: String[]=[/*'ACCEPTED',*/'COMPLETED'];
+    statuses2: String[]=[];
     selectedStatus:String='';
     callFunc(num:number){
       this.http.put(`http://localhost:8081/seller/${num}/change-status?status=${this.selectedStatus}`, {})

@@ -1,12 +1,10 @@
-import { NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-landing-page',
-  imports: [FormsModule,NgFor,NgIf],
+  imports: [],
   templateUrl: './dashboard-landing-page.html',
   styleUrl: './dashboard-landing-page.css'
 })

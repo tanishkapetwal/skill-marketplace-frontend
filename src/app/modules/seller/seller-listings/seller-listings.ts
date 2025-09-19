@@ -1,12 +1,10 @@
-import { NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 // import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-seller-listings',
-  imports: [FormsModule,NgFor],
+  imports: [],
   templateUrl: './seller-listings.html',
   styleUrl: './seller-listings.css'
 })

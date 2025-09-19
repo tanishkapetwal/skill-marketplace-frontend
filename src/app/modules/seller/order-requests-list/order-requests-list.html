@@ -21,9 +21,16 @@
                     <td>{{item.ordersSkillsListingSkillsName}}</td>
                     <div class="form-group">
                         <label for="status">{{item.ordersStatus}}</label>
+                        @if(item.ordersStatus==='PENDING'){
                             <select id="status" [(ngModel)]="selectedStatus" (change)="callFunc(item.id)">
-                                <option *ngFor="let status of statuses" value="{{status}}">{{status}}</option>
-                            </select>
+                                @for(status of statuses;track $index){
+                                <option value="{{status}}">{{status}}</option>}
+                            </select>}
+                        @else if(item.ordersStatus==='ACCEPTED'){
+                            <select id="status" [(ngModel)]="selectedStatus" (change)="callFunc(item.id)">
+                                @for(status of statuses1;track $index){
+                                <option value="{{status}}">{{status}}</option>}
+                            </select>}    
                     </div>
                 </tr>}
             </tbody>
