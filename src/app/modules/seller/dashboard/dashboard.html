@@ -1,13 +1,13 @@
 <div class="flex flex-col h-screen">
   <!-- Navbar -->
-  <nav class="flex justify-between items-center bg-[#1976D2] px-5 py-3 text-white">
+  <nav class="flex justify-between items-center bg-gray-900 px-5 py-3 text-blue-50">
     <div class="text-lg font-bold">Seller Dashboard</div>
     <ul class="flex gap-5 list-none m-0 p-0">
       <li>
         <a routerLink="/teacher-dashboard/dashboard-landing-page"
            routerLinkActive="active-link"
            [routerLinkActiveOptions]="{ exact: true }"
-           class="text-white no-underline font-medium transition-colors duration-200 hover:text-[#BBDEFB]">
+           class="text-white no-underline font-medium transition-colors duration-200 hover:text-blue-200">
            Home
         </a>
       </li>
@@ -15,7 +15,7 @@
         <a routerLink="/teacher-dashboard/skills"
            routerLinkActive="active-link"
            [routerLinkActiveOptions]="{ exact: true }"
-           class="text-white no-underline font-medium transition-colors duration-200 hover:text-[#BBDEFB]">
+           class="text-white no-underline font-medium transition-colors duration-200 hover:text-blue-200">
            Skills
         </a>
       </li>
@@ -23,7 +23,7 @@
         <a routerLink="/teacher-dashboard/add-to-listing"
            routerLinkActive="active-link"
            [routerLinkActiveOptions]="{ exact: true }"
-           class="text-white no-underline font-medium transition-colors duration-200 hover:text-[#BBDEFB]">
+           class="text-white no-underline font-medium transition-colors duration-200 hover:text-blue-200">
            Add to Listing
         </a>
       </li>
@@ -31,7 +31,7 @@
         <a routerLink="/teacher-dashboard/seller-listings"
            routerLinkActive="active-link"
            [routerLinkActiveOptions]="{ exact: true }"
-           class="text-white no-underline font-medium transition-colors duration-200 hover:text-[#BBDEFB]">
+           class="text-white no-underline font-medium transition-colors duration-200 hover:text-blue-200">
            My Listings
         </a>
       </li>
@@ -39,20 +39,20 @@
         <a routerLink="/teacher-dashboard/order-request"
            routerLinkActive="active-link"
            [routerLinkActiveOptions]="{ exact: true }"
-           class="text-white no-underline font-medium transition-colors duration-200 hover:text-[#BBDEFB]">
+           class="text-white no-underline font-medium transition-colors duration-200 hover:text-blue-200">
            My Order Requests
         </a>
       </li>
       <li>
         <a routerLink="/"
-           class="text-white no-underline font-medium transition-colors duration-200 hover:text-[#BBDEFB]">
+           class="text-white no-underline font-medium transition-colors duration-200 hover:text-blue-200">
            LogOut
         </a>
       </li>
     </ul>
   </nav>
   <!-- Dashboard Content -->
-  <div class="flex-1 p-5 bg-[#F5F5F5]">
+  <div class="flex-1 p-5 bg-blue-200">        <!--changed-->
     <router-outlet></router-outlet>        <!-- children paths mentioned in app.router.ts will appear in routerOutlet here-->
   </div>
 </div>

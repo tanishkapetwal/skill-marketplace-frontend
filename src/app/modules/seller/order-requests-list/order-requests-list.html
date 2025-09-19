@@ -1,7 +1,7 @@
 <div class="my-5">
   <div class="w-390">
     <table class="w-full border-separate border-spacing-0 rounded-lg overflow-hidden bg-white shadow-md">
-      <thead class="bg-gradient-to-r from-[#4F8EF7] to-[#1C57C9] text-white text-left">
+      <thead class="bg-gray-900 text-blue-50 text-left">
         <tr>
           <th class="px-4 py-3 font-semibold text-sm tracking-wide">Order Id</th>
           <th class="px-4 py-3 font-semibold text-sm tracking-wide">Order Date</th>
@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         @for(item of SkillsList; track $index){
-        <tr class="even:bg-[#FAFBFF] hover:bg-[#F3F6FF] cursor-pointer transition-colors duration-200">
+        <tr >
           <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.id}}</td>
           <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersOrderDate}}</td>
           <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersCustomerUserName}}</td>
