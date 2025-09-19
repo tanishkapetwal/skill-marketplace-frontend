@@ -1,35 +1,41 @@
-<div class="row">
-    <div class="col-6">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Listing Id</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Duration Of Teaching</th>
-                    <th>Average Rating</th>
-                    <th>Skills Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Delete Listing</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(item of SkillsList; track $index){
-                <tr>
-                    <td>{{item.id}}</td>
-                    <td>{{item.title}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.price}}</td>
-                    <td>{{item.time}}</td>
-                    <td>{{item.avgRating}}</td>
-                    <td>{{item.skillsName}}</td>
-                    <td>{{item.skillsDescription}}</td>
-                    <td>{{item.skillsCategory}}</td>
-                    <td><button type="button" class="btn btn-success" (click)="callFunc(item.id)">Click To Delete</button></td>
-                </tr>}
-            </tbody>
-        </table>
-    </div>
+<div class="my-5">
+  <div class="w-390">
+    <table class="w-full border-separate border-spacing-0 rounded-lg overflow-hidden bg-white shadow-md">
+      <thead class="bg-gradient-to-r from-blue-500 to-blue-800 text-white text-left">
+        <tr>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Listing Id</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Title</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Description</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Price</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Duration Of Teaching</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Average Rating</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Skills Name</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Description</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Category</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Delete Listing</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of SkillsList; track $index){
+        <tr class="even:bg-[#fafbff] hover:bg-[#f3f6ff] cursor-pointer transition-colors duration-200">
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.id}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.title}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.description}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.price}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.time}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.avgRating}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.skillsName}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.skillsDescription}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">{{item.skillsCategory}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-gray-200">
+            <button type="button"
+              class="w-full px-4 py-2 bg-blue-600 text-white font-bold rounded hover:bg-blue-800 transition"
+              (click)="callFunc(item.id)">
+              Click To Delete
+            </button>
+          </td>
+        </tr>}
+      </tbody>
+    </table>
+  </div>
 </div>

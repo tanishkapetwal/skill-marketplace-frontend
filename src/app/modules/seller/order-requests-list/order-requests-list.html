@@ -1,39 +1,45 @@
-<div class="row">
-    <div class="col-6">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Order Id</th>
-                    <th>Order Date</th>
-                    <th>Ordered By</th>
-                    <th>Price</th>
-                    <th>Skill Name</th>
-                    <th>Current Order Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(item of SkillsList; track $index){
-                <tr>
-                    <td>{{item.id}}</td>
-                    <td>{{item.ordersOrderDate}}</td>
-                    <td>{{item.ordersCustomerUserName}}</td>
-                    <td>₹{{item.skillsListingPrice}}</td>
-                    <td>{{item.ordersSkillsListingSkillsName}}</td>
-                    <div class="form-group">
-                        <label for="status">{{item.ordersStatus}}</label>
-                        @if(item.ordersStatus==='PENDING'){
-                            <select id="status" [(ngModel)]="selectedStatus" (change)="callFunc(item.id)">
-                                @for(status of statuses;track $index){
-                                <option value="{{status}}">{{status}}</option>}
-                            </select>}
-                        @else if(item.ordersStatus==='ACCEPTED'){
-                            <select id="status" [(ngModel)]="selectedStatus" (change)="callFunc(item.id)">
-                                @for(status of statuses1;track $index){
-                                <option value="{{status}}">{{status}}</option>}
-                            </select>}    
-                    </div>
-                </tr>}
-            </tbody>
-        </table>
-    </div>
+<div class="my-5">
+  <div class="w-390">
+    <table class="w-full border-separate border-spacing-0 rounded-lg overflow-hidden bg-white shadow-md">
+      <thead class="bg-gradient-to-r from-[#4F8EF7] to-[#1C57C9] text-white text-left">
+        <tr>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Order Id</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Order Date</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Ordered By</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Price</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Skill Name</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Current Order Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of SkillsList; track $index){
+        <tr class="even:bg-[#FAFBFF] hover:bg-[#F3F6FF] cursor-pointer transition-colors duration-200">
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.id}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersOrderDate}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersCustomerUserName}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">₹{{item.skillsListingPrice}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersSkillsListingSkillsName}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">
+            <div class="py-3 px-4 font-bold text-black align-middle">
+              <label for="status">{{item.ordersStatus}}</label>
+              @if(item.ordersStatus==='PENDING'){
+              <select id="status" [(ngModel)]="selectedStatus"
+                (change)="callFunc(item.id)"
+                class="mt-2 block w-full border border-gray-300 rounded-md p-2 text-sm">
+                @for(status of statuses;track $index){
+                <option value="{{status}}">{{status}}</option>}
+              </select>}
+              @else if(item.ordersStatus==='ACCEPTED'){
+              <select id="status" [(ngModel)]="selectedStatus"
+                (change)="callFunc(item.id)"
+                class="mt-2 block w-full border border-gray-300 rounded-md p-2 text-sm">
+                @for(status of statuses1;track $index){
+                <option value="{{status}}">{{status}}</option>}
+              </select>}
+            </div>
+          </td>
+        </tr>}
+      </tbody>
+    </table>
+  </div>
 </div>

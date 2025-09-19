@@ -1,25 +1,31 @@
-<div class="row">
-    <div class="col-6">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Skill Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Add To Listing</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(item of SkillsList; track $index){
-                <tr>
-                    <td>{{item.id}}</td>
-                    <td>{{item.name}}</td>
-                    <td>{{item.description}}</td>
-                    <td>{{item.category}}</td>
-                    <td><button type="button" class="btn btn-success" (click)="redirectPage(item.id,item.name,item.description)">Click To Add</button></td>
-                </tr>}
-            </tbody>
-        </table>
-    </div>
+<div class="my-5">
+  <div class="w-390">
+    <table class="w-full border-separate border-spacing-0 rounded-lg overflow-hidden bg-white shadow-md">
+      <thead class="bg-gradient-to-r from-[#4F8EF7] to-[#1C57C9] text-white text-left">
+        <tr>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Skill Id</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Name</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Description</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Category</th>
+          <th class="px-4 py-3 font-semibold text-sm tracking-wide">Add To Listing</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of SkillsList; track $index){
+        <tr class="even:bg-[#FAFBFF] hover:bg-[#F3F6FF] cursor-pointer transition-colors duration-200">
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.id}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.name}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.description}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.category}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">
+            <button type="button"
+              class="w-full px-4 py-2 bg-[#007BFF] text-white font-bold rounded hover:bg-[#0056B3] transition"
+              (click)="redirectPage(item.id,item.name,item.description)">
+              Click To Add
+            </button>
+          </td>
+        </tr>}
+      </tbody>
+    </table>
+  </div>
 </div>
