@@ -8,7 +8,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),      // essential for navbar routerLinks
-    provideHttpClient(withInterceptors([authInterceptor]))
+    provideRouter(routes),      // essential for linking app.routes.ts file to app
+    provideHttpClient(withInterceptors([authInterceptor]))   // interceptor attached to project
   ]
 };

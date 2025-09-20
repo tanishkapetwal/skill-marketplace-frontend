@@ -5,6 +5,7 @@ import { AddToListing } from './modules/seller/add-to-listing/add-to-listing';
 import { OrderRequestsList } from './modules/seller/order-requests-list/order-requests-list';
 import { SellerListings } from './modules/seller/seller-listings/seller-listings';
 import { DashboardLandingPage } from './modules/seller/dashboard-landing-page/dashboard-landing-page';
+import { authGuard } from './modules/seller/seller-auth/auth-guard';
 
 export const routes: Routes = [
 {
@@ -32,13 +33,13 @@ export const routes: Routes = [
     path: 'teacher-dashboard',
     component: Dashboard,
     children: [
-        { path: '', component: DashboardLandingPage},
-        { path: 'skills', component: Skills },
-        { path: 'add-to-listing', component: AddToListing },
-        { path: 'order-request', component: OrderRequestsList },
-        { path: 'seller-listings', component: SellerListings},
-        { path: 'dashboard-landing-page', component: DashboardLandingPage}
-    ]
+        { path: '', component: DashboardLandingPage,canActivate:[authGuard]},
+        { path: 'skills', component: Skills,canActivate:[authGuard] },
+        { path: 'add-to-listing', component: AddToListing,canActivate:[authGuard] },
+        { path: 'order-request', component: OrderRequestsList,canActivate:[authGuard] },
+        { path: 'seller-listings', component: SellerListings,canActivate:[authGuard]},
+        { path: 'dashboard-landing-page', component: DashboardLandingPage,canActivate:[authGuard]}
+    ],canActivate:[authGuard]
     // path: 'teacher-dashboard',
     // pathMatch: 'full',
     // loadComponent: () => {
@@ -51,5 +52,6 @@ export const routes: Routes = [
     loadComponent: () => {
         return import('./modules/customer/dashboard/dashboard').then((m) => m.Dashboard);
     }
-}
+},
+{ path:'**',redirectTo:'',pathMatch:'full'} 
 ];
