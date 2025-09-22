@@ -13,11 +13,11 @@
       <tbody>
         @for(item of SkillsList; track $index){
         <tr>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.id}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.name}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.description}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.category}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.id}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.name}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.description}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.category}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">
             <button type="button"
               class="w-full px-4 py-2 bg-gray-900 text-blue-50 font-bold rounded hover:bg-gray-600 transition"
               (click)="redirectPage(item.id,item.name,item.description)">

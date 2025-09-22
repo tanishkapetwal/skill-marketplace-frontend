@@ -14,12 +14,12 @@
       <tbody>
         @for(item of SkillsList; track $index){
         <tr >
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.id}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersOrderDate}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersCustomerUserName}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">₹{{item.skillsListingPrice}}</td>
-          <td class="px-4 py-3 text-sm text-gray-800 border border-[#E0E6F1]">{{item.ordersSkillsListingSkillsName}}</td>
-          <td class="px-4 py-3 text-gray-800 border border-[#E0E6F1]">
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.id}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.ordersOrderDate}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.ordersCustomerUserName}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">₹{{item.skillsListingPrice}}</td>
+          <td class="px-4 py-3 text-sm text-gray-800 border border-slate-200">{{item.ordersSkillsListingSkillsName}}</td>
+          <td class="px-4 py-3 text-gray-800 border border-slate-200">
             <div class="py-3 px-4 font-bold text-black align-middle">
               <label for="status">{{item.ordersStatus}}</label></div>
               @if(item.ordersStatus==='PENDING'){
