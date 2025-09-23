@@ -1,4 +1,6 @@
+<app-navbar></app-navbar>
 <div class="auth-container">
+
     <div class="auth-box">
         <div class="p-[20px] auth-image">
             <img src="assets/studentFull.png" alt="Auth Illustration" />
@@ -31,17 +33,18 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <input type="submit"
-                            class="p-3 cursor-pointer  disabled:cursor-not-allowed w-full
+                        <input type="submit" class="p-3 cursor-pointer  disabled:cursor-not-allowed w-full
                              bg-gray-900 text-white py-2 rounded-lg font-semibold
-                             hover:bg-gray-700 transition duration-300 "
-                            value="Login" [disabled]="loginForm.invalid">
+                             hover:bg-gray-700 transition duration-300 " value="Login" [disabled]="loginForm.invalid">
                     </div>
                 </form>
-
+                @if(message !== ''){
+                <div class="text-[10px] flex text-center justify-center items-center text-red-600">{{message}}</div>
+                }
                 <p class="text-center mt-[16px] text-[12px] text-gray-900 ">
                     No account yet?
-                    <span class="text-gray-900 cursor-pointer font-bold hover:underline" (click)="toggle()">Sign up</span>
+                    <span class="text-gray-900 cursor-pointer font-bold hover:underline" (click)="toggle()">Sign
+                        up</span>
                 </p>
             </div>
             <div class="card" [class.hidden-card]="isLogin" [class.visible-card]="!isLogin">
@@ -76,16 +79,15 @@
                     </div>
 
                     <div class="text-center">
-                        <input type="submit" value="Sign Up"
-                            class="w-full p-3 bg-[#a855f7] text-white py-2 rounded-lg 
+                        <input type="submit" value="Sign Up" class="w-full p-3 bg-[#a855f7] text-white py-2 rounded-lg 
                             font-semibold hover:opacity-80 transition duration-300 cursor-pointer
-                              disabled:cursor-not-allowed"
-                            [disabled]="signupForm.invalid">
+                              disabled:cursor-not-allowed" [disabled]="signupForm.invalid">
                     </div>
                 </form>
                 <p class="text-center mt-[16px] text-[12px] text-gray-900 ">
                     Already have an account?
-                    <span class=" text-gray-900 cursor-pointer font-bold hover:underline" (click)="toggle()">Login</span>
+                    <span class=" text-gray-900 cursor-pointer font-bold hover:underline"
+                        (click)="toggle()">Login</span>
                 </p>
             </div>
         </div>

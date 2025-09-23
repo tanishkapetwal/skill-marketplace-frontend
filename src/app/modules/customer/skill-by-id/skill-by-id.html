@@ -1,0 +1,84 @@
+<div class="bg-gray-900 h-[500px]  px-14 py-14">
+    <div class=" cursor-pointer text-white" (click)="backIcon()">
+       <i class="fa-solid fa-arrow-left"></i>
+    </div>>
+    <div class="flex justify-center rounded-2xl  bg-white p-10 space-x-6" [class]="showModal? 'opacity-30':''">
+
+        <div class="w-2/3">
+            <div>
+                <div class="text-4xl font-medium"> {{skill.title}}</div>
+                <div class="text-sm "> {{skill.description}}</div>
+            </div>
+           <div class="my-[10px] items-center flex space-x-2.5">
+             <div class="">{{skill.skillsName}}</div>
+             <div class="text-[12px]">( {{skill.skillsDescription}} )</div>
+           </div>
+            <div class="flex  my-[10px]">
+                <div class="w-[150px] flex flex-col">
+                    <div class="w-full flex items-center space-x-2">
+                        <i class=" text-orange-500 fa-solid fa-clock w-3.5"></i>
+                        <div class=" text-2xl font-bold ">{{skill.time}} </div>
+                    </div>
+                    <div class="text-xs text-gray-500">hours of content</div>
+                </div>
+                <div class="w-[150px] flex flex-col">
+                    <div class="w-full flex  items-center space-x-2">
+                        <i class="text-yellow-600 w-3.5 mr-1.5 fa-solid fa-star"></i>
+                        <div class="text-2xl font-bold">{{skill.avgRating}}</div>
+                    </div>
+                    <div class="text-xs text-gray-500">average course rating</div>
+                </div>
+                <div class="w-[150px] font-bold text-xl text-gray-900">{{skill.skillsCategory}}</div>
+
+            </div>
+            <div class="m-[10px]">{{skill.sellerUserName}}</div>
+           
+            <div class="flex space-x-4">
+                <button class="bg-gray-900 text-white hover:bg-gray-600 px-3 py-2 rounded-xl w-fit  " (click)="onClick()">create
+                    order</button>
+                <p><i class="fa fa-inr w-3.5 mr-1.5"></i>{{skill.price}}</p>
+
+            </div>
+
+        </div>
+        <div class="w-1/3 flex justify-center items-center bg-blue-100 rounded-2xl">
+            <img class="w-full h-64 p-12"
+                src="https://media.geeksforgeeks.org/wp-content/uploads/20240501161048/SQL-Databases.png" />
+        </div>
+
+
+    </div>
+
+</div>
+
+<div *ngIf="showModal" class="fixed inset-0 flex items-center justify-center ">
+    <div class="bg-white rounded-2xl shadow-lg w-11/12 md:w-2/3 lg:w-1/2 p-6 relative">
+        <button (click)="closeSkillModal()" class="absolute top-3 right-3 text-gray-500 hover:text-black">
+            ✕
+        </button>
+        <div class="flex justify-center m-3">Select Date and Time of your choice:</div>
+        <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm, skill.id)" class="flex flex-col justify-center items-center">
+            <div class="flex justify-around">
+                <label for="start">Start:</label>
+                <input  class="mx-[10px] border-gray-300 border-2 rounded-sm mb-[5px]" type="datetime-local" id="start" name="start" [(ngModel)]="appointmentData.appointmentStart"
+                    #start="ngModel" required>
+
+                <div class="text-xs text-red-700 " *ngIf="start.invalid && (start.dirty || start.touched)">
+                    necessary
+                </div>
+            </div>
+
+            <div class="flex justify-around">
+                <label for="end">End:</label>
+                <input class="mx-[10px] border-gray-300 border-2 rounded-sm" type="datetime-local" id="end" name="end" [(ngModel)]="appointmentData.appointmentEnd"
+                    #end="ngModel" required>
+
+                <div class="text-xs text-red-700 " *ngIf="end.invalid && (end.dirty || end.touched)">
+                    necessary
+                </div>
+            </div>
+            <br>
+            <button class="rounded-sm bg-gray-900 text-white p-2 hover:bg-gray-700 w-fit" type="submit" [disabled]="eventForm.invalid">Submit</button>
+        </form>
+    </div>
+</div>
