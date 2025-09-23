@@ -1,9 +1,9 @@
 import { HttpInterceptorFn } from "@angular/common/http";
-export const sellerAuthInterceptor: HttpInterceptorFn=(req,next)=>{
+export const adminAuthInterceptor: HttpInterceptorFn=(req,next)=>{
     const token =localStorage.getItem('token');
     //debugger
     console.log(token)     // testing
-    if(req.url.includes('/login')||req.url.includes('/signup')){
+    if(req.url.includes('/login')||req.url.includes('/add-admin')){
         return next(req);
     }
     if(token){
