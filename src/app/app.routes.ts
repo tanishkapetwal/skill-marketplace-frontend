@@ -13,6 +13,8 @@ import { SkillList } from './modules/admin/skill-list/skill-list';
 import { SellerList } from './modules/admin/seller-list/seller-list';
 import { CustomerList } from './modules/admin/customer-list/customer-list';
 import { AddSkill } from './modules/admin/add-skill/add-skill';
+import { AddAdmin } from './modules/admin/add-admin/add-admin';
+import { AdminList } from './modules/admin/admin-list/admin-list';
 
 export const routes: Routes = [
 {
@@ -69,6 +71,8 @@ export const routes: Routes = [
         { path: 'seller-list', component: SellerList,canActivate:[adminAuthGuard] },
         { path: 'customer-list', component: CustomerList,canActivate:[adminAuthGuard] },
         { path: 'add-skill', component: AddSkill,canActivate:[adminAuthGuard] },
+        { path: 'add-admin', component: AddAdmin,canActivate:[adminAuthGuard] },
+        { path: 'admin-list', component: AdminList,canActivate:[adminAuthGuard] },
         { path: 'admin-dashboard-landing-page', component: AdminDashboardLandingPage,canActivate:[adminAuthGuard]}
     ],canActivate:[adminAuthGuard]
     // path: 'teacher-dashboard',

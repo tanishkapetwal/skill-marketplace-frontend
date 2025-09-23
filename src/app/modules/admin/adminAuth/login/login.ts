@@ -47,18 +47,4 @@ export class Login {
     });
 
   }
-
-  onSignup(form: any) {
-    this.authService.signUp(this.signupData).subscribe({
-      next: (res) => {
-        console.log('Signup succesful:', res);
-
-        localStorage.setItem('token', res.token)
-        this.router.navigateByUrl('/admin-dashboard')
-      },
-      error: (err) => {
-        console.error('signup failed', err);
-      }
-    });
-  }
 }
