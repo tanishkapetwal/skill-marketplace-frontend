@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../customer/service/auth.service';
 import { NgIf } from '@angular/common';
 import { Route, Router } from '@angular/router';
+import { Navbar } from "../../../../shared/navbar/navbar";
 
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, Navbar],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -29,20 +30,21 @@ export class Login {
     this.isLogin = !this.isLogin;
   }
   message: string = ''
+
+  name:string=''
+
   constructor(private authService: AuthService, private router:Router) { }
+
   onLogin(form: any) {
-    // if (this.loginData.email === '' || this.loginData.password === '') { this.message = 'Fill all details!' }
-
-
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
-        console.log('Login succesful:', res);
-
-        localStorage.setItem('token', res.token)
+        console.log('Access succesful:', res.accessToken);
+        localStorage.setItem('accessToken', res.accessToken)
         this.router.navigateByUrl('student-dashboard')
       },
       error: (err) => {
         console.error('Login failed', err);
+        this.message = "Incorrect Email or Password! Try again"
       }
     });
 
@@ -53,7 +55,7 @@ export class Login {
       next: (res) => {
         console.log('Signup succesful:', res);
 
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('accessToken', res.accessToken)
         this.router.navigateByUrl('/student-dashboard')
       },
       error: (err) => {
@@ -61,4 +63,6 @@ export class Login {
       }
     });
   }
+  
+ 
 }

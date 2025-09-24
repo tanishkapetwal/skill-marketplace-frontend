@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
+
 import { SellerDashboard } from './modules/seller/seller-dashboard/seller-dashboard';
-import { Skills } from './modules/seller/skills/skills';
+import { SellerSkills } from './modules/seller/skills/skills';//to change in export
 import { AddToListing } from './modules/seller/add-to-listing/add-to-listing';
 import { OrderRequestsList } from './modules/seller/order-requests-list/order-requests-list';
 import { SellerListings } from './modules/seller/seller-listings/seller-listings';
@@ -15,6 +16,8 @@ import { CustomerList } from './modules/admin/customer-list/customer-list';
 import { AddSkill } from './modules/admin/add-skill/add-skill';
 import { AddAdmin } from './modules/admin/add-admin/add-admin';
 import { AdminList } from './modules/admin/admin-list/admin-list';
+import { Dashboard } from './modules/customer/dashboard/dashboard';
+import { Skills } from './modules/customer/skills/skills';
 
 export const routes: Routes = [
 {
@@ -39,6 +42,7 @@ export const routes: Routes = [
     }
 },
 {
+
     path: 'admin/login',
     pathMatch: 'full',
     loadComponent: () => {
@@ -50,7 +54,7 @@ export const routes: Routes = [
     component: SellerDashboard,
     children: [
         { path: '', component: DashboardLandingPage,canActivate:[sellerAuthGuard]},
-        { path: 'skills', component: Skills,canActivate:[sellerAuthGuard] },
+        { path: 'skills', component: SellerSkills,canActivate:[sellerAuthGuard] },
         { path: 'add-to-listing', component: AddToListing,canActivate:[sellerAuthGuard] },
         { path: 'order-request', component: OrderRequestsList,canActivate:[sellerAuthGuard] },
         { path: 'seller-listings', component: SellerListings,canActivate:[sellerAuthGuard]},
@@ -81,12 +85,35 @@ export const routes: Routes = [
     //     return import('./modules/seller/dashboard/dashboard').then((m) => m.Dashboard);
     // }
 },
-{
+  {
+
     path: 'student-dashboard',
-    pathMatch: 'full',
-    loadComponent: () => {
-        return import('./modules/customer/dashboard/dashboard').then((m) => m.Dashboard);
-    }
+    component:Dashboard,
+    children: [{path: 'skills', component: Skills}]
 },
+
+
+{
+    path:'skills/:id',
+    pathMatch:'full',
+    loadComponent:()=>{
+        return import('./modules/customer/skill-by-id/skill-by-id').then((m=>m.SkillById))
+    },
+},
+{
+    path:'skills',
+    pathMatch:'full',
+    loadComponent:() =>{
+        return import('./modules/customer/skills/skills').then(m=>m.Skills)
+    },
+},
+{
+    path:'my-courses',
+    pathMatch:'full',
+    loadComponent:() =>{
+        return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
+    },
+},
+
 { path:'**',redirectTo:'',pathMatch:'full'} 
 ];
