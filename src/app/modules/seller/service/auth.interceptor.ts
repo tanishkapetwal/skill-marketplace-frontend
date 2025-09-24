@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from "@angular/common/http";
 export const sellerAuthInterceptor: HttpInterceptorFn=(req,next)=>{
-    const token =localStorage.getItem('token');
+    const token =localStorage.getItem('accessToken');
     //debugger
     console.log(token)     // testing
     if(req.url.includes('/login')||req.url.includes('/signup')){
