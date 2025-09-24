@@ -19,6 +19,8 @@ export class AuthService{
      signUp(data:{name:string; email:string; password:string; phone:string}):Observable<any>{
         return this.http.post<any>(this.apiUrl+'signup', data)
      }
+     isLoggedIn():boolean{return !!localStorage.getItem('accessToken')}
+     
       getStudentDetails() : Observable<any>{
          this.res= this.http.get(this.apiUrl);
          return this.res;

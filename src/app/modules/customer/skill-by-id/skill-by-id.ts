@@ -21,9 +21,16 @@ export class SkillById {
 
   skill:any={}
   constructor(private service: AuthService, private router:Router){
-   const stored = localStorage.getItem('skillById');
-   this.skill = stored? JSON.parse(stored):{};
-   console.log(this.skill)
+
+    const nav= this.router.getCurrentNavigation();
+    const data= nav?.extras.state as {formData: any};
+    console.log(data.formData)
+    if(data){
+      this.skill = data.formData
+    }
+  //  const stored = localStorage.getItem('skillById');
+  //  this.skill = stored? JSON.parse(stored):{};
+  //  console.log(this.skill)
   }
   showModal= false;
   onClick(){
@@ -46,6 +53,6 @@ export class SkillById {
     }
   }
   backIcon(){
-      this.router.navigate(['/skills'])
+      this.router.navigate(['/student-dashboard/skills'])
   }
 }

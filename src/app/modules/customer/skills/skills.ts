@@ -18,13 +18,16 @@ export class Skills implements OnInit{
   selectedCategory:string='';
   categories:string[]=[];
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router ){ }
-  ngOnInit(){
-    const stored =localStorage.getItem('skills');
-    this.skills = stored ? JSON.parse(stored):[]
-    console.log(this.skills)
+  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router ){
+     const nav= this.router.getCurrentNavigation();
+    const data= nav?.extras.state as {formData: any};
+    console.log(data.formData)
+    if(data){
+      this.skills = data.formData
+    }
     this.categories = [...new Set (this.skills.map(s=>s.skillsCategory))]
-  }
+   }
+  ngOnInit(){  }
 
   filteredSkills(){
     if(!this.selectedCategory)return this.skills;
@@ -35,8 +38,8 @@ export class Skills implements OnInit{
     {
       console.log(res);
       this.skill=res;
-      localStorage.setItem('skillById', JSON.stringify(this.skill));
-      this.router.navigate(['/skills',id])
+      // localStorage.setItem('skillById', JSON.stringify(this.skill));
+      this.router.navigate(['/student-dashboard/skills',id],{state:{formData:res}})
     })    
   }
 

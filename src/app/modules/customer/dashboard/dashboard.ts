@@ -9,9 +9,10 @@ import { NotificationService } from '../service/notification.service';
 
 
 
+
 @Component({
   selector: 'app-dashboard',
-  imports: [FontAwesomeModule,Sidebar],
+  imports: [FontAwesomeModule, Sidebar, RouterOutlet],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 
@@ -41,7 +42,7 @@ export class Dashboard {
         this.selectedSkill =+id;
         this.showSkill  =true;
       }
-      else if(this.router.url.includes('/skills')){
+      else if(this.router.url.includes('/student-dashboard/skills')){
         this.showSkill = true;
         this.selectedSkill = this.skills[0].id;
       }
@@ -54,7 +55,8 @@ export class Dashboard {
 
   getStudent() {
     this.authService.getStudentDetails().subscribe((res: any) => {
-      this.name =res.name;
+      console.log(res)
+      this.name =res.userName;
       this.custID = res.id; 
       this.notificationService.setCustId(this.custID)
     })
@@ -71,13 +73,14 @@ export class Dashboard {
     {
       console.log(res);
       this.skill=res;
-      localStorage.setItem('skillById', JSON.stringify(this.skill));
-      this.router.navigate(['/skills',id])
+      // localStorage.setItem('skillById', JSON.stringify(this.skill));
+      this.router.navigate(['/student-dashboard/skills',id],{})
     })    
   }
-  explore(){
-    localStorage.setItem('skills', JSON.stringify(this.skills));
-    this.router.navigate(['/skills'])
+  explore(skills:any){
+    // localStorage.setItem('skills', JSON.stringify(this.skills));
+    console.log(skills)
+    this.router.navigate(['/student-dashboard/skills'],{state:{formData:skills}})
   }
   showNotification=false;
   notificationModal(){

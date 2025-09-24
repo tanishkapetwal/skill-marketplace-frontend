@@ -18,102 +18,110 @@ import { AddAdmin } from './modules/admin/add-admin/add-admin';
 import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
 import { Skills } from './modules/customer/skills/skills';
+import { SkillById } from './modules/customer/skill-by-id/skill-by-id';
+import { MyCourses } from './modules/customer/my-courses/my-courses';
+import { authGuard } from './modules/customer/customer-auth/auth-guard';
 
 export const routes: Routes = [
-{
-    path: '',
-    pathMatch: 'full',
-    loadComponent: () => {
-        return import('./shared/homepage/homepage').then((m) => m.Homepage);
-    }
-},
-{
-    path: 'student/login',
-    pathMatch: 'full',
-    loadComponent: () => {
-        return import('./modules/customer/customer-auth/login/login').then((m) => m.Login);
-    }
-},
-{
-    path: 'teacher/login',
-    pathMatch: 'full',
-    loadComponent: () => {
-        return import('./modules/seller/seller-auth/login/login').then((m) => m.Login);
-    }
-},
-{
-
-    path: 'admin/login',
-    pathMatch: 'full',
-    loadComponent: () => {
-        return import('./modules/admin/adminAuth/login/login').then((m) => m.Login);
-    }
-},
-{
-    path: 'teacher-dashboard',
-    component: SellerDashboard,
-    children: [
-        { path: '', component: DashboardLandingPage,canActivate:[sellerAuthGuard]},
-        { path: 'skills', component: SellerSkills,canActivate:[sellerAuthGuard] },
-        { path: 'add-to-listing', component: AddToListing,canActivate:[sellerAuthGuard] },
-        { path: 'order-request', component: OrderRequestsList,canActivate:[sellerAuthGuard] },
-        { path: 'seller-listings', component: SellerListings,canActivate:[sellerAuthGuard]},
-        { path: 'dashboard-landing-page', component: DashboardLandingPage,canActivate:[sellerAuthGuard]}
-    ],canActivate:[sellerAuthGuard]
-    // path: 'teacher-dashboard',
-    // pathMatch: 'full',
-    // loadComponent: () => {
-    //     return import('./modules/seller/dashboard/dashboard').then((m) => m.Dashboard);
-    // }
-},
-{
-    path: 'admin-dashboard',
-    component: AdminDashboard,
-    children: [
-        { path: '', component: AdminDashboardLandingPage,canActivate:[adminAuthGuard]},
-        { path: 'skill-list', component: SkillList,canActivate:[adminAuthGuard] },
-        { path: 'seller-list', component: SellerList,canActivate:[adminAuthGuard] },
-        { path: 'customer-list', component: CustomerList,canActivate:[adminAuthGuard] },
-        { path: 'add-skill', component: AddSkill,canActivate:[adminAuthGuard] },
-        { path: 'add-admin', component: AddAdmin,canActivate:[adminAuthGuard] },
-        { path: 'admin-list', component: AdminList,canActivate:[adminAuthGuard] },
-        { path: 'admin-dashboard-landing-page', component: AdminDashboardLandingPage,canActivate:[adminAuthGuard]}
-    ],canActivate:[adminAuthGuard]
-    // path: 'teacher-dashboard',
-    // pathMatch: 'full',
-    // loadComponent: () => {
-    //     return import('./modules/seller/dashboard/dashboard').then((m) => m.Dashboard);
-    // }
-},
-  {
-
-    path: 'student-dashboard',
-    component:Dashboard,
-    children: [{path: 'skills', component: Skills}]
-},
-
-
-{
-    path:'skills/:id',
-    pathMatch:'full',
-    loadComponent:()=>{
-        return import('./modules/customer/skill-by-id/skill-by-id').then((m=>m.SkillById))
+    {
+        path: '',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./shared/homepage/homepage').then((m) => m.Homepage);
+        }
     },
-},
-{
-    path:'skills',
-    pathMatch:'full',
-    loadComponent:() =>{
-        return import('./modules/customer/skills/skills').then(m=>m.Skills)
+    {
+        path: 'student/login',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./modules/customer/customer-auth/login/login').then((m) => m.Login);
+        }
     },
-},
-{
-    path:'my-courses',
-    pathMatch:'full',
-    loadComponent:() =>{
-        return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
+    {
+        path: 'teacher/login',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./modules/seller/seller-auth/login/login').then((m) => m.Login);
+        }
     },
-},
+    {
 
-{ path:'**',redirectTo:'',pathMatch:'full'} 
+        path: 'admin/login',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./modules/admin/adminAuth/login/login').then((m) => m.Login);
+        }
+    },
+    {
+        path: 'teacher-dashboard',
+        component: SellerDashboard,
+        children: [
+            { path: '', component: DashboardLandingPage, canActivate: [sellerAuthGuard] },
+            { path: 'skills', component: SellerSkills, canActivate: [sellerAuthGuard] },
+            { path: 'add-to-listing', component: AddToListing, canActivate: [sellerAuthGuard] },
+            { path: 'order-request', component: OrderRequestsList, canActivate: [sellerAuthGuard] },
+            { path: 'seller-listings', component: SellerListings, canActivate: [sellerAuthGuard] },
+            { path: 'dashboard-landing-page', component: DashboardLandingPage, canActivate: [sellerAuthGuard] }
+        ], canActivate: [sellerAuthGuard]
+        // path: 'teacher-dashboard',
+        // pathMatch: 'full',
+        // loadComponent: () => {
+        //     return import('./modules/seller/dashboard/dashboard').then((m) => m.Dashboard);
+        // }
+    },
+    {
+        path: 'admin-dashboard',
+        component: AdminDashboard,
+        children: [
+            { path: '', component: AdminDashboardLandingPage, canActivate: [adminAuthGuard] },
+            { path: 'skill-list', component: SkillList, canActivate: [adminAuthGuard] },
+            { path: 'seller-list', component: SellerList, canActivate: [adminAuthGuard] },
+            { path: 'customer-list', component: CustomerList, canActivate: [adminAuthGuard] },
+            { path: 'add-skill', component: AddSkill, canActivate: [adminAuthGuard] },
+            { path: 'add-admin', component: AddAdmin, canActivate: [adminAuthGuard] },
+            { path: 'admin-list', component: AdminList, canActivate: [adminAuthGuard] },
+            { path: 'admin-dashboard-landing-page', component: AdminDashboardLandingPage, canActivate: [adminAuthGuard] }
+        ], canActivate: [adminAuthGuard]
+        // path: 'teacher-dashboard',
+        // pathMatch: 'full',
+        // loadComponent: () => {
+        //     return import('./modules/seller/dashboard/dashboard').then((m) => m.Dashboard);
+        // }
+    },
+    {
+
+        path: 'student-dashboard',
+        component: Dashboard,
+        children: [
+              { path: '', component: Dashboard, canActivate: [authGuard] },
+            { path: 'skills', component: Skills,canActivate:[authGuard] },
+        { path: 'skills/:id', component: SkillById,canActivate:[authGuard] },
+        { path: 'my-courses', component: MyCourses,canActivate:[authGuard] },
+        ],canActivate:[authGuard] 
+    },
+
+
+    // {
+    //     path:'skills/:id',
+    //     pathMatch:'full',
+    //     loadComponent:()=>{
+    //         return import('./modules/customer/skill-by-id/skill-by-id').then((m=>m.SkillById))
+    //     },
+    // },
+    // {
+    //     path:'skills',
+    //     pathMatch:'full',
+    //     loadComponent:() =>{
+    //         return import('./modules/customer/skills/skills').then(m=>m.Skills)
+    //     },
+    // },
+    // {
+    //     path:'my-courses',
+    //     pathMatch:'full',
+    //     loadComponent:() =>{
+    //         return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
+    //     },
+    // },
+
+    { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
