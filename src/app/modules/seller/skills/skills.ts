@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })
-export class Skills {
+export class SellerSkills {
     constructor(private http:HttpClient,private router:Router){
       const token = localStorage.getItem('token');
 // if (token) {
