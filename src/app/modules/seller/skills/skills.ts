@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SellerSkills {
     constructor(private http:HttpClient,private router:Router){
-      const token = localStorage.getItem('token');
+      const accessToken = localStorage.getItem('accessToken');
 // if (token) {
 //   const payload = JSON.parse(atob(token.split('.')[1]));
 //   console.log('Decoded JWT payload:', payload);

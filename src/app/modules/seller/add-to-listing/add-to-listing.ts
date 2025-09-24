@@ -21,7 +21,7 @@ export class AddToListing {
   };
 
   constructor( private http: HttpClient,private router:Router) {
-    const token = localStorage.getItem('token');
+    const accessToken = localStorage.getItem('accessToken');
     const nav= this.router.getCurrentNavigation();
     const data= nav?.extras.state?.['formData'];
     if(data){

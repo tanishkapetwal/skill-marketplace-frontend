@@ -38,7 +38,7 @@ export class Login {
       next: (res) => {
         console.log('Login succesful:', res);
 
-        localStorage.setItem('token', res.token)
+        localStorage.setItem('accessToken', res.accessToken)
         this.router.navigateByUrl('admin-dashboard')
       },
       error: (err) => {

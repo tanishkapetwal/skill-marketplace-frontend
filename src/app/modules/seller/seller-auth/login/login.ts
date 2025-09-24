@@ -33,7 +33,7 @@ loginData = {
       next: (res) => {
         console.log('Login succesful:', res);
 
-        localStorage.setItem('accessToken', res.token)
+        localStorage.setItem('accessToken', res.accessToken)
         console.log(localStorage.getItem('accessToken'));
         this.router.navigateByUrl('teacher-dashboard')
       },
@@ -48,7 +48,7 @@ loginData = {
       next: (res) => {
         console.log('Signup succesful:', res);
         if(res && res.token){
-          localStorage.setItem('accessToken', res.token)
+          localStorage.setItem('accessToken', res.accessToken)
         }
 
         // localStorage.setItem('token', res.token)

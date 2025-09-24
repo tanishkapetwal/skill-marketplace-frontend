@@ -10,6 +10,9 @@ import { AuthService } from '../service/auth.service';
 })
 export class AdminDashboard {
 
-  constructor(private auth:AuthService){}
-    LogOut(){this.auth.logOut();}
-}
+  constructor(private auth:AuthService){const accessToken = localStorage.getItem('accessToken');}
+LogOut(){
+    this.auth.logout().subscribe((res)=>{
+      console.log(res)
+      localStorage.removeItem('accessToken')}); 
+  }}

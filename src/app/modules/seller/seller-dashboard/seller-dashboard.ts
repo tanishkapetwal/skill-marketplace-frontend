@@ -10,7 +10,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class SellerDashboard {
 
-  constructor(private auth:AuthService, private router: Router){}
+  constructor(private auth:AuthService, private router: Router){const accessToken = localStorage.getItem('accessToken');}
    LogOut(){
     this.auth.logout().subscribe((res)=>{
       console.log(res)

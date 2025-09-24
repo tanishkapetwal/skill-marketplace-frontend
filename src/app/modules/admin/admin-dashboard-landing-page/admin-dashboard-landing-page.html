@@ -1,1 +1,52 @@
-<p>admin-dashboard-landing-page works!</p>
+<!-- seller-dashboard.component.html -->
+<div class="w-full h-screen flex flex-col">
+  <!-- Top Half: Active Skills -->
+  <div class="w-full h-1/2 bg-gray-900 shadow-lg rounded-md p-6 flex flex-col">
+    <!-- Explore More Button -->
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-blue-50">Skills</h2>
+      <button
+        class="px-4 py-2 bg-green-900 text-white text-sm rounded-md hover:bg-green-700 transition"
+        (click)="exploreSkills()"
+      >
+        All Skills >>
+      </button>
+    </div>
+    <!-- Skills Container -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4 overflow-y-auto">
+      <!-- Single Skill Card -->
+      @for(skill of SkillsList;track $index){ 
+      <div class="group relative bg-blue-50 shadow-md rounded-lg p-4">
+        <!-- Normal View -->
+        <p class="text-sm text-gray-600">{{ skill.id }}</p>
+        <p class="text-black font-medium">{{ skill.name }}</p>
+        <p class="text-sm text-gray-600">{{ skill.description }}</p>
+        <p class="text-sm text-gray-600">{{ skill.category }}</p>
+      </div>}
+    </div>
+  </div>
+  <!-- Bottom Half: Pending Orders -->
+  <div class="w-full mt-5 h-1/2 bg-gray-900 shadow-inner rounded-md p-6 flex flex-col">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-semibold text-blue-50">Customers</h2>
+      <button
+        class="px-4 py-2 bg-green-900 text-white text-sm rounded-md hover:bg-green-700 transition"
+        (click)="exploreCustomers()"
+      >
+        All Customers >>
+      </button>
+    </div>
+    <!-- Orders Container -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 overflow-y-auto">
+      <!-- Single Order Card -->
+      @for(customer of CustomerList;track $index){ 
+      <div class="group relative bg-blue-50 shadow-md rounded-lg p-4">
+        <!-- Normal View -->
+        <p class="text-sm text-gray-600">{{ customer.id }}</p>
+        <p class="text-black font-medium">{{ customer.userName }}</p>
+        <p class="text-sm text-gray-600">{{ customer.userEmail }}</p>
+        <p class="text-sm text-gray-600">{{ customer.userPhone }}</p>
+      </div>}
+    </div>
+  </div>
+</div>

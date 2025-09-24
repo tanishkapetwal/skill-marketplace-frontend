@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class SellerListings {
     constructor(private http:HttpClient  ,/* private authService: AuthService */){
-      const token = localStorage.getItem('token');
+      const accessToken = localStorage.getItem('accessToken');
 // if (token) {
 //   const payload = JSON.parse(atob(token.split('.')[1]));
 //   console.log('Decoded JWT payload:', payload);

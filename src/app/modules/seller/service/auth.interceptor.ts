@@ -1,15 +1,15 @@
 import { HttpInterceptorFn } from "@angular/common/http";
 export const sellerAuthInterceptor: HttpInterceptorFn=(req,next)=>{
-    const token =localStorage.getItem('accessToken');
+    const accessToken =localStorage.getItem('accessToken');
     //debugger
-    console.log(token)     // testing
+    console.log(accessToken)     // testing
     if(req.url.includes('/login')||req.url.includes('/signup')){
         return next(req);
     }
-    if(token){
+    if(accessToken){
         const cloned= req.clone({
             setHeaders:{
-                Authorization:`Bearer ${token}`
+                Authorization:`Bearer ${accessToken}`
             }
         });
         console.log(req)

@@ -21,7 +21,7 @@ export class AddSkill {
   };
 
   constructor( private http: HttpClient,private router:Router) {
-    const token = localStorage.getItem('token');
+    const accessToken = localStorage.getItem('accessToken');
   }
   reset(form:any){ form.reset();
                     this.listingData.category='';
