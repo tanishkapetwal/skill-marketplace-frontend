@@ -38,7 +38,7 @@
     <div class="mx-40 h-[200px] space-y-3 my-12 flex flex-col justify-around bg-blue-100 p-4 rounded-2xl">
       <div class="flex text-gray-900 justify-between p-2">
         <h4>Active Courses</h4>
-        <button (click)="explore()" class="text-[10px] py-2 px-3 border-2 rounded-4xl">See All</button>
+        <button (click)="explore(skills)" class="text-[10px] py-2 px-3 border-2 rounded-4xl">See All</button>
       </div>
       <div class="flex justify-items-start space-x-8 shadow-blue-200">
         @for(skill of skills.slice(0,3); track skill.id){
@@ -91,3 +91,4 @@
 
 
 </div>
+<router-outlet></router-outlet>
