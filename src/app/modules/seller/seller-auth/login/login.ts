@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../seller/service/auth.service';
@@ -6,7 +5,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -35,6 +34,8 @@ loginData = {
         console.log('Login succesful:', res);
 
         localStorage.setItem('token', res.token)
+        console.log(localStorage.getItem('token'));
+        this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {
         console.error('Login failed', err);
@@ -46,8 +47,12 @@ loginData = {
     this.authService.signUp(this.signupData).subscribe({
       next: (res) => {
         console.log('Signup succesful:', res);
+        if(res && res.token){
+          localStorage.setItem('token', res.token)
+        }
 
-        localStorage.setItem('token', res.token)
+        // localStorage.setItem('token', res.token)
+        this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {
         console.error('signnup failed', err);

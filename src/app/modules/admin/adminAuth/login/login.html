@@ -1,0 +1,47 @@
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="p-[20px] auth-image">
+            <img src="assets/admin.png" alt="Auth Illustration" />
+        </div>
+        <div class="card-wrapper">
+
+            <div class="card" [class.hidden-card]="!isLogin" [class.visible-card]="isLogin">
+                <h2 class="title">Welcome Back!</h2>
+                <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="space-y-5 text-[12px]">
+                    <div>
+                        <label for="email" class=" block text-gray-700 font-medium mb-1">Email</label>
+                        <input required type="email" name="email" id="email"
+                            class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                            placeholder="john@gmail.com" [(ngModel)]="loginData.email" #email="ngModel">
+                        <div *ngIf="email.invalid && email.touched  " class="text-red-500 text-[10px] mt-1">
+                            Email is required
+                        </div>
+                    </div>
+                    <div>
+                        <label for="password" class=" block text-gray-700 font-medium mb-1">Password</label>
+                        <input required type="password" name="password" id="password"
+                            class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                            placeholder="********" [(ngModel)]="loginData.password" #password="ngModel">
+                        <div *ngIf="password.invalid && password.touched" class="text-red-500 text-[10px] mt-1">
+                            Password is required
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input type="submit"
+                            class="p-3 cursor-pointer  disabled:cursor-not-allowed w-full
+                             bg-gray-900 text-white py-2 rounded-lg font-semibold
+                             hover:bg-gray-700 transition duration-300 "
+                            value="Login" [disabled]="loginForm.invalid">
+                    </div>
+                </form>
+            </div>
+            <div class="card" [class.hidden-card]="isLogin" [class.visible-card]="!isLogin">
+                
+                <p class="text-center mt-[16px] text-[12px] text-gray-900 ">
+                    Already have an account?
+                    <span class=" text-gray-900 cursor-pointer font-bold hover:underline" (click)="toggle()">Login</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
