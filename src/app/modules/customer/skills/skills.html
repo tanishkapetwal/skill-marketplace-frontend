@@ -1,0 +1,63 @@
+<div class="flex w-full ">
+  <app-sidebar></app-sidebar>
+  <div class="bg-gray-100  w-full  flex flex-col px-44 py-[20px]">
+    <div class="rounded-b-sm p-10 flex justify-center text-5xl font-extrabold bg-blue-50 ">
+      Skills
+    </div>
+    <div class="flex justify-end text-xs space-x-4 items-center">
+      <span class="text-gray-700">Filter</span>
+      <select class="border-gray-500 border-2 rounded-sm" [(ngModel)]="selectedCategory">
+        <option value="">All</option>
+        @for(c of categories; track c){
+        <option [value]="c">{{c}}</option>
+        }
+      </select>
+    </div>
+    <div class="py-[30px] flex justify-items-start space-x-8 shadow-blue-200">
+
+      @for(skill of filteredSkills(); track skill.id){
+      <div class=" w-52 h-72 rounded-2xl px-[12px] pb-4 bg-white">
+        <img class="rounded-2xl mt-[-20px] w-full h-32"
+          src="https://media.geeksforgeeks.org/wp-content/uploads/20240501161048/SQL-Databases.png" />
+        <p class="p-2">{{skill.title}}</p>
+        <p class="px-2 text-xs font-bold">{{skill.skillsName}}</p>
+        <div class="p-2 flex justify-between">
+          <div class="text-xs text-gray-900">
+            <p><i class="fa-solid fa-clock w-3.5 mr-1.5"></i> {{skill.time}} H</p>
+            <p><i class="fa fa-inr w-3.5 mr-1.5"></i>{{skill.price}}</p>
+
+          </div>
+          <div class="relative flex h-[45px] w-[45px] items-center justify-center rounded-full border-4 border-blue-200"
+            style="background: conic-gradient(#95BBF8 calc({{skill.avgRating}} * 20%), transparent calc({{skill.avgRating}} * 20%));">
+            <span class="text-xs font-bold text-gray-900">{{skill.avgRating * 20}}%</span>
+          </div>
+        </div>
+        <div class="bg-gray-900 mb-[-5px] text-white mx-3 p-2 rounded-2xl flex justify-center">
+          <button class=" text-center text-xs  hover:ring-blue-300 " (click)='openSkill(skill.id)'>
+            Explore Now
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+
+  </div>
+  <!-- <div class="relative w-full">
+  <div class="flex overflow-x-auto space-x-4 p-4 scrollbar-hide">
+    <div *ngFor="let skill of skills" class="min-w-[250px] bg-blue-50 rounded-xl shadow-md p-4">
+      <img class="rounded-xl w-full h-32 object-cover"
+        src="https://media.geeksforgeeks.org/wp-content/uploads/20240501161048/SQL-Databases.png" />
+      <h3 class="mt-2 font-semibold">{{skill.title}}</h3>
+      <p class="text-sm text-gray-600">{{skill.time}} • ₹{{skill.price}}</p>
+      <p class="text-xs mt-1">Rating: {{skill.avgRating}}</p>
+      <button  >Book Now</button>
+    </div>
+  </div>
+  <button class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+    ‹
+  </button>
+  <button class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+    ›
+  </button>
+</div> -->
+</div>

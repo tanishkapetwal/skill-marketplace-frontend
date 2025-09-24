@@ -1,11 +1,89 @@
 import { Component } from '@angular/core';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthService } from '../service/auth.service';
+import { ActivatedRoute, ParamMap, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Skills } from '../skills/skills';
+import { NgIf } from '@angular/common';
+import { Sidebar } from '../sidebar/sidebar';
+import { NotificationService } from '../service/notification.service';
+
+
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [FontAwesomeModule,Sidebar],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css'
+  styleUrl: './dashboard.css',
+
 })
 export class Dashboard {
+  skill:any={}
+  showSkill:boolean=false;
+  selectedSkill:number |null = null;
+  mode=true;
+  toggleMode(){
+    this.mode=!this.mode
+  }
 
+  name: string = ''
+  skills:Array<any> =[]
+  custID:number=0
+  notifications:any[]=[]
+  constructor(private authService: AuthService, private router: Router, 
+    private route: ActivatedRoute, private notificationService: NotificationService) {
+    this.getStudent(),
+    this.getSkills(),
+
+
+    this.route.paramMap.subscribe((params:ParamMap)=>{
+      const id = params.get('id');
+      if(id){
+        this.selectedSkill =+id;
+        this.showSkill  =true;
+      }
+      else if(this.router.url.includes('/skills')){
+        this.showSkill = true;
+        this.selectedSkill = this.skills[0].id;
+      }
+      else{
+        this.showSkill = false;
+      }
+    });
+  this.notificationService.notifications$.subscribe(n=>this.notifications=n);
+  }
+
+  getStudent() {
+    this.authService.getStudentDetails().subscribe((res: any) => {
+      this.name =res.name;
+      this.custID = res.id; 
+      this.notificationService.setCustId(this.custID)
+    })
+  }
+  getSkills(){
+    this.authService.getSkills().subscribe((res:any)=>{
+      console.log(res);
+      this.skills=res;
+    })
+  }
+  
+  openSkill(id:any){
+    this.authService.getSkillById(id).subscribe((res:any)=>
+    {
+      console.log(res);
+      this.skill=res;
+      localStorage.setItem('skillById', JSON.stringify(this.skill));
+      this.router.navigate(['/skills',id])
+    })    
+  }
+  explore(){
+    localStorage.setItem('skills', JSON.stringify(this.skills));
+    this.router.navigate(['/skills'])
+  }
+  showNotification=false;
+  notificationModal(){
+    this.showNotification = true;
+  }
+  closeNotification(){
+    this.showNotification = false;
+  }
 }
