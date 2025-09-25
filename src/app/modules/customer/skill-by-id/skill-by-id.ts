@@ -50,6 +50,16 @@ export class SkillById {
         console.log("completed")
         this.closeSkillModal()
       })
+  
+      this.service.emailSeller(id).subscribe({
+      next: (data) => {
+      console.log("Email sent")
+      },
+      error: (err) => {
+        console.error('Error fetching data:', err);
+        
+      }
+    });
     }
   }
   backIcon(){
