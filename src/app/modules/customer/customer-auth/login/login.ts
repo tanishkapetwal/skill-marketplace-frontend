@@ -39,9 +39,13 @@ export class Login {
   onLogin(form: NgForm) {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
-        console.log('Access succesful:', res.accessToken);
+      if(res.role==="CUSTOMER"){
+          console.log('Login succesful:', res);
+
         localStorage.setItem('accessToken', res.accessToken)
+        console.log(localStorage.getItem('accessToken'));
         this.router.navigateByUrl('student-dashboard')
+        }
       },
       error: (err) => {
         console.error('Login failed', err);

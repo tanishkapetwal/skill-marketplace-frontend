@@ -36,10 +36,10 @@ export class Login {
 
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
-        console.log('Login succesful:', res);
-
+        if(res.role==="ADMIN"){
         localStorage.setItem('accessToken', res.accessToken)
         this.router.navigateByUrl('admin-dashboard')
+        }
       },
       error: (err) => {
         console.error('Login failed', err);
