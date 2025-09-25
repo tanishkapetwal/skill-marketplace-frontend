@@ -37,7 +37,7 @@ export class AddToListing {
       .subscribe({
         next: () => {
           alert('Listing created successfully!');
-          form.reset();
+          form.reset();this.router.navigateByUrl('teacher-dashboard/seller-listings');
         },
         error: (err) => {console.error(err);
            alert('Error Occured! Plz try again');
