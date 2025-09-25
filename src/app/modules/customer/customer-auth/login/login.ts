@@ -45,7 +45,7 @@ export class Login {
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.message = "Incorrect Email or Password! Try again"
+        this.message = err.message
       }
     });
 
@@ -60,7 +60,7 @@ export class Login {
         this.router.navigateByUrl('/student-dashboard')
       },
       error: (err) => {
-        console.error('signnup failed', err);
+        console.error('signup failed', err);
       }
     });
   }

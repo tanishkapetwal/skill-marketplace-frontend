@@ -31,11 +31,17 @@ loginData = {
   onLogin(form: any) {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
-        console.log('Login succesful:', res);
+
+        if(res.role==="SELLER"){
+          console.log('Login succesful:', res);
 
         localStorage.setItem('accessToken', res.accessToken)
         console.log(localStorage.getItem('accessToken'));
         this.router.navigateByUrl('teacher-dashboard')
+        }
+        
+        
+        
       },
       error: (err) => {
         console.error('Login failed', err);

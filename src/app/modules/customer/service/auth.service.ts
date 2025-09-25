@@ -11,10 +11,10 @@ export class AuthService{
 
      res: any =[];
      login(data:{email:string; password:string}): Observable<any>{
-        return this.http.post<any>(this.apiUrl+'login', data,{withCredentials: true})
+        return this.http.post<any>('http://localhost:8081/login', data,{withCredentials: true})
      }
      logout():Observable<any>{
-        return this.http.post<any>(this.apiUrl+'logout',"",{withCredentials: true})
+        return this.http.post<any>('http://localhost:8081/logout',"",{withCredentials: true})
      }
      signUp(data:{name:string; email:string; password:string; phone:string}):Observable<any>{
         return this.http.post<any>(this.apiUrl+'signup', data)

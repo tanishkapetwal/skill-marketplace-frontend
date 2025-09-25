@@ -69,16 +69,15 @@ export class Dashboard {
     })
   }
 
-  openSkill(id: any) {
+  openSkill(id: number) {
     this.authService.getSkillById(id).subscribe((res: any) => {
       console.log(res);
       this.skill = res;
       console.log(this.skill)
-      this.router.navigate(['/student-dashboard/skills', id], {})
+      this.router.navigate(['/student-dashboard/skills', id], {state:{formData:res}})
     })
   }
-  explore(skills: any) {
-    // localStorage.setItem('skills', JSON.stringify(this.skills));
+  explore(skills: Array<Skill>) {
     console.log(skills)
     this.router.navigate(['skills'], { relativeTo: this.route, state: { formData: skills } })
   }
