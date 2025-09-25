@@ -20,8 +20,8 @@ export class SellerDashboard {
   }
    LogOut(){
     this.auth.logout().subscribe((res)=>{
-      console.log(res)
+      console.log("Inside Logout");
+      
       localStorage.removeItem('accessToken')}); 
-    //  this.router.navigateByUrl('teacher/login')
   }
 }

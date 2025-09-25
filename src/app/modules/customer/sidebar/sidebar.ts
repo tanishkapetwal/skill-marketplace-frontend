@@ -16,9 +16,10 @@ export class Sidebar {
     this.sidebar=!this.sidebar;
   }
   logout(){
-    this.authservice.logout().subscribe((res)=>{
-      console.log(res)
-      localStorage.removeItem('accessToken')}); 
-     this.router.navigateByUrl('student/login')
+    this.authservice.logout().subscribe({
+      next: (response) =>{ console.log('Response:', response);localStorage.removeItem('accessToken');  this.router.navigateByUrl('student/login')},
+      error: (error) => console.error('Error:', error)
+     }); 
+   
   }
 }

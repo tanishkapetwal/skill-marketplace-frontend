@@ -23,7 +23,7 @@ export const userdetailsInterceptor: HttpInterceptorFn = (req, next) => {
           refreshTokenSubject.next(null);
 
           return http.post<{ accessToken: string }>(
-            'http://localhost:8081/customer/refresh',
+            'http://localhost:8081/refresh',
             {},
             { withCredentials: true }
           ).pipe(

@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-order-requests-list',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './order-requests-list.css'
 })
 export class OrderRequestsList {
-    constructor(private http:HttpClient){
+    constructor(private http:HttpClient, private auth:AuthService){
       const accessToken = localStorage.getItem('accessToken');
       this.http.get("http://localhost:8081/seller/order-request").subscribe((res:any)=>{
         console.log(res),
@@ -18,14 +19,13 @@ export class OrderRequestsList {
   
     }
     SkillsList:any[]=[];
-    statuses: String[]=[/*'PENDING',*/'ACCEPTED','REJECTED',/*'COMPLETED'*/];
-    statuses1: String[]=[/*'ACCEPTED',*/'COMPLETED'];
-    statuses2: String[]=[];
-    selectedStatus:String='';
+    statuses: string[]=[/*'PENDING',*/'ACCEPTED','REJECTED',/*'COMPLETED'*/];
+    statuses1: string[]=[/*'ACCEPTED',*/'COMPLETED'];
+    statuses2: string[]=[];
+    selectedStatus:string='';
     callFunc(num:number){
-      this.http.put(`http://localhost:8081/seller/${num}/change-status?status=${this.selectedStatus}`, {})
-      .subscribe({
-        next: () => {alert('Status updated successfully!');window.location.reload();},
+     this.auth.changeStatus(num,this.selectedStatus ).subscribe({
+        next: (res) => {console.log(res);alert(`Status updated successfully! ${res}`);window.location.reload();},
         error: (err) => {alert('Status updated!');window.location.reload()}
       });
     }

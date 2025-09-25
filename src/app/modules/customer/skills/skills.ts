@@ -12,8 +12,10 @@ import { FormsModule, NgModel } from '@angular/forms';
 })
 export class Skills implements OnInit{
 
-  skill:any={}
-  skills: Array<any> = []
+  skill:Skill={avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
+    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
+  }
+  skills: Array<Skill> = []
 
   selectedCategory:string='';
   categories:string[]=[];
@@ -21,7 +23,6 @@ export class Skills implements OnInit{
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router ){
      const nav= this.router.getCurrentNavigation();
     const data= nav?.extras.state as {formData: any};
-    console.log(data.formData)
     if(data){
       this.skills = data.formData
     }
@@ -33,16 +34,26 @@ export class Skills implements OnInit{
     if(!this.selectedCategory)return this.skills;
     return this.skills.filter(s=>s.skillsCategory===this.selectedCategory)
   }
-   openSkill(id:any){
+   openSkill(id:number){
     this.authService.getSkillById(id).subscribe((res:any)=>
     {
-      console.log(res);
       this.skill=res;
-      // localStorage.setItem('skillById', JSON.stringify(this.skill));
       this.router.navigate(['/student-dashboard/skills',id],{state:{formData:res}})
     })    
   }
 
 
+}
+interface Skill {
+  avgRating: number
+  description: string
+  id: number
+  price: number
+  sellerUserName: string
+  skillsCategory: string
+  skillsDescription: string
+  skillsName: string
+  time: number
+  title: string
 }
 

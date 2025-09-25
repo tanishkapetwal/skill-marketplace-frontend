@@ -19,7 +19,9 @@ export class SkillById {
     'appointmentEnd' : ''
    }
 
-  skill:any={}
+  skill:Skill={avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
+    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
+  }
   constructor(private service: AuthService, private router:Router){
 
     const nav= this.router.getCurrentNavigation();
@@ -28,9 +30,6 @@ export class SkillById {
     if(data){
       this.skill = data.formData
     }
-  //  const stored = localStorage.getItem('skillById');
-  //  this.skill = stored? JSON.parse(stored):{};
-  //  console.log(this.skill)
   }
   showModal= false;
   onClick(){
@@ -41,7 +40,7 @@ export class SkillById {
   }
 
    eventDateTime: string = '';
-  onSubmit(form: any, id:number): void {
+  onSubmit(form: NgForm, id:number): void {
     if (form.valid) {
       console.log('Form Submitted!', this.appointmentData.appointmentStart);
        console.log('Form Submitted!', this.appointmentData.appointmentEnd);
@@ -50,9 +49,29 @@ export class SkillById {
         console.log("completed")
         this.closeSkillModal()
       })
+  
+      this.service.emailSeller(id).subscribe({
+      next: (data) => {
+      console.log("Email sent")
+      },
+      error: (err) => {
+        console.error('Error fetching data:', err);
+        
+      }
+    });
     }
   }
-  backIcon(){
-      this.router.navigate(['/student-dashboard/skills'])
-  }
+
+}
+interface Skill {
+  avgRating: number
+  description: string
+  id: number
+  price: number
+  sellerUserName: string
+  skillsCategory: string
+  skillsDescription: string
+  skillsName: string
+  time: number
+  title: string
 }

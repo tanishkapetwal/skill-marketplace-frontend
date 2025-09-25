@@ -27,18 +27,26 @@ loginData = {
 
     this.isLogin = !this.isLogin;
   }
+  message:string=''
   constructor(private authService: AuthService, private router:Router) { }
   onLogin(form: any) {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
-        console.log('Login succesful:', res);
+
+        if(res.role==="SELLER"){
+          console.log('Login succesful:', res);
 
         localStorage.setItem('accessToken', res.accessToken)
         console.log(localStorage.getItem('accessToken'));
         this.router.navigateByUrl('teacher-dashboard')
+        }
+        
+        
+        
       },
       error: (err) => {
         console.error('Login failed', err);
+        this.message = "Bad Credentials"
       }
     });
   }
@@ -50,8 +58,6 @@ loginData = {
         if(res && res.token){
           localStorage.setItem('accessToken', res.accessToken)
         }
-
-        // localStorage.setItem('token', res.token)
         this.router.navigateByUrl('teacher-dashboard')
       },
       error: (err) => {
