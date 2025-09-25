@@ -33,6 +33,9 @@
                              hover:bg-gray-700 transition duration-300 "
                             value="Login" [disabled]="loginForm.invalid">
                     </div>
+                     @if(message!=''){
+                        <div class="text-red-600 text-xs text-center">{{message}}</div>
+                    }
                 </form>
             </div>
             <div class="card" [class.hidden-card]="isLogin" [class.visible-card]="!isLogin">
