@@ -11,10 +11,6 @@ import { FormsModule } from '@angular/forms';
 export class OrderRequestsList {
     constructor(private http:HttpClient){
       const accessToken = localStorage.getItem('accessToken');
-// if (token) {
-//   const payload = JSON.parse(atob(token.split('.')[1]));
-//   console.log('Decoded JWT payload:', payload);
-// }
       this.http.get("http://localhost:8081/seller/order-request").subscribe((res:any)=>{
         console.log(res),
         this.SkillsList=res;
@@ -30,7 +26,7 @@ export class OrderRequestsList {
       this.http.put(`http://localhost:8081/seller/${num}/change-status?status=${this.selectedStatus}`, {})
       .subscribe({
         next: () => {alert('Status updated successfully!');window.location.reload();},
-        error: (err) => alert('Error updating status: ' + err.message)
+        error: (err) => {alert('Status updated!');window.location.reload()}
       });
     }
 

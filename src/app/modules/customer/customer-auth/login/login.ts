@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { AuthService } from '../../../customer/service/auth.service';
 import { NgIf } from '@angular/common';
 import { Route, Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { Navbar } from "../../../../shared/navbar/navbar";
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
+
 export class Login {
   loginData = {
     'email': '',
@@ -35,7 +36,7 @@ export class Login {
 
   constructor(private authService: AuthService, private router:Router) { }
 
-  onLogin(form: any) {
+  onLogin(form: NgForm) {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
         console.log('Access succesful:', res.accessToken);
@@ -50,7 +51,7 @@ export class Login {
 
   }
 
-  onSignup(form: any) {
+  onSignup(form: NgForm) {
     this.authService.signUp(this.signupData).subscribe({
       next: (res) => {
         console.log('Signup succesful:', res);
@@ -66,3 +67,4 @@ export class Login {
   
  
 }
+

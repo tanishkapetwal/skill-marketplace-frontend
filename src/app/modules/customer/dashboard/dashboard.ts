@@ -8,8 +8,6 @@ import { Sidebar } from '../sidebar/sidebar';
 import { NotificationService } from '../service/notification.service';
 
 
-
-
 @Component({
   selector: 'app-dashboard',
   imports: [FontAwesomeModule, Sidebar, RouterOutlet],
@@ -18,75 +16,94 @@ import { NotificationService } from '../service/notification.service';
 
 })
 export class Dashboard {
-  skill:any={}
-  showSkill:boolean=false;
-  selectedSkill:number |null = null;
-  mode=true;
-  toggleMode(){
-    this.mode=!this.mode
+  skill: Skill = {avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
+    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
+  }
+  showSkill: boolean = false;
+  selectedSkill: number | null = null;
+  mode = true;
+  toggleMode() {
+    this.mode = !this.mode
   }
 
   name: string = ''
-  skills:Array<any> =[]
-  custID:number=0
-  notifications:any[]=[]
-  constructor(private authService: AuthService, private router: Router, 
+  skills: Array<Skill> = []
+  custID: number = 0
+  notifications: notifications[] = []
+  constructor(private authService: AuthService, private router: Router,
     private route: ActivatedRoute, private notificationService: NotificationService) {
     this.getStudent(),
-    this.getSkills(),
+      this.getSkills(),
 
 
-    this.route.paramMap.subscribe((params:ParamMap)=>{
-      const id = params.get('id');
-      if(id){
-        this.selectedSkill =+id;
-        this.showSkill  =true;
-      }
-      else if(this.router.url.includes('/student-dashboard/skills')){
-        this.showSkill = true;
-        this.selectedSkill = this.skills[0].id;
-      }
-      else{
-        this.showSkill = false;
-      }
-    });
-  this.notificationService.notifications$.subscribe(n=>this.notifications=n);
+      this.route.paramMap.subscribe((params: ParamMap) => {
+        const id = params.get('id');
+        if (id) {
+          this.selectedSkill = +id;
+          this.showSkill = true;
+        }
+        else if (this.router.url.includes('/student-dashboard/skills')) {
+          this.showSkill = true;
+          this.selectedSkill = this.skills[0].id;
+        }
+        else {
+          this.showSkill = false;
+        }
+      });
+    this.notificationService.notifications$.subscribe(n => this.notifications = n);
   }
 
   getStudent() {
     this.authService.getStudentDetails().subscribe((res: any) => {
       console.log(res)
-      this.name =res.userName;
-      this.custID = res.id; 
+      this.name = res.userName;
+      this.custID = res.id;
       this.notificationService.setCustId(this.custID)
     })
   }
-  getSkills(){
-    this.authService.getSkills().subscribe((res:any)=>{
+  getSkills() {
+    this.authService.getSkills().subscribe((res: any) => {
       console.log(res);
-      this.skills=res;
+      this.skills = res;
+      console.log(this.skills)
     })
   }
-  
-  openSkill(id:any){
-    this.authService.getSkillById(id).subscribe((res:any)=>
-    {
+
+  openSkill(id: any) {
+    this.authService.getSkillById(id).subscribe((res: any) => {
       console.log(res);
-      this.skill=res;
-      // localStorage.setItem('skillById', JSON.stringify(this.skill));
-      this.router.navigate(['/student-dashboard/skills',id],{})
-    })    
+      this.skill = res;
+      console.log(this.skill)
+      this.router.navigate(['/student-dashboard/skills', id], {})
+    })
   }
-  explore(skills:any){
+  explore(skills: any) {
     // localStorage.setItem('skills', JSON.stringify(this.skills));
     console.log(skills)
-    this.router.navigate(['/student-dashboard/skills'],{state:{formData:skills}})
+    this.router.navigate(['skills'], { relativeTo: this.route, state: { formData: skills } })
   }
-  showNotification=false;
-  notificationModal(){
+  showNotification = false;
+  notificationModal() {
     this.showNotification = true;
   }
-  closeNotification(){
+  closeNotification() {
     this.showNotification = false;
   }
+}
+interface Skill {
+  avgRating: number
+  description: string
+  id: number
+  price: number
+  sellerUserName: string
+  skillsCategory: string
+  skillsDescription: string
+  skillsName: string
+  time: number
+  title: string
+}
+interface notifications{
+  orderId: number,
+  message: string
+
 }

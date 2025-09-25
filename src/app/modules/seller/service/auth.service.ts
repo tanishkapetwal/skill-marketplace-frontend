@@ -19,6 +19,11 @@ export class AuthService{
      logout():Observable<any>{
         return this.http.post<any>(this.apiUrl+'logout',"",{withCredentials: true})
      }
+
+     getSellerDetails():Observable<any>{
+
+      return this.http.get<any>(this.apiUrl)
+     }
    //   delete(id:number):Observable<any>{
 
    //       return  this.http.delete(`http://localhost:8081/seller/delete/${id}`)
