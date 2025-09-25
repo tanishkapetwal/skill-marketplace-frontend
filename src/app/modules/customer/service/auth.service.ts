@@ -36,6 +36,12 @@ export class AuthService{
    console.log(data,id);
       return this.http.post<any>(this.apiUrl+'order/'+id, data)
   }
+
+  emailSeller(id:number):Observable<any>{
+   console.log("Email");
+   const data = "email"
+   return this.http.post<any>(this.apiUrl+'email/'+id,{})
+  }
   orders():Observable<any>{
       return this.http.get<any>(this.apiUrl+'all-orders')
   }
