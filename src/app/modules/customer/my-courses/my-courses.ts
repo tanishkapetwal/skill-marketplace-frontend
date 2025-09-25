@@ -14,9 +14,9 @@ export class MyCourses implements OnInit {
 
   constructor(private service: AuthService){}
 
-  orders:Array<any> = []
-  customer:any=[]
-  skills:any=[]
+  orders:Array<Order> = []
+  customer:Customer={id: 0,userEmail: "",userName: "",userPhone: ""}
+  skills:Array<Skill>=[]
   selectRating:number=0
   ratingSubmitted=false;
   ngOnInit() {
@@ -37,4 +37,23 @@ export class MyCourses implements OnInit {
       console.log(this.ratingSubmitted)
     });
   }
+}
+interface Customer{
+  id: number,userEmail:string,userName: string,userPhone: string
+}
+interface Skill {
+  avgRating: number
+  description: string
+  id: number
+  price: number
+  sellerUserName: string
+  skillsCategory: string
+  skillsDescription: string
+  skillsName: string
+  time: number
+  title: string
+}
+interface Order{  appointmentEnd: string,appointmentStart: string,
+  id: number,orderDate: string,orderRating: number,skillsListingId: number,
+  skillsListingSellerUserName: string,skillsListingTitle: string  ,status: string
 }

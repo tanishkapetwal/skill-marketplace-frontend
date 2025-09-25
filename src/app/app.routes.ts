@@ -92,36 +92,34 @@ export const routes: Routes = [
 
         path: 'student-dashboard',
         component: Dashboard,
-        children: [
-              { path: '', component: Dashboard, canActivate: [authGuard] },
-            { path: 'skills', component: Skills,canActivate:[authGuard] },
-        { path: 'skills/:id', component: SkillById,canActivate:[authGuard] },
-        { path: 'my-courses', component: MyCourses,canActivate:[authGuard] },
-        ],canActivate:[authGuard] 
+        canActivate:[authGuard] 
     },
 
 
-    // {
-    //     path:'skills/:id',
-    //     pathMatch:'full',
-    //     loadComponent:()=>{
-    //         return import('./modules/customer/skill-by-id/skill-by-id').then((m=>m.SkillById))
-    //     },
-    // },
-    // {
-    //     path:'skills',
-    //     pathMatch:'full',
-    //     loadComponent:() =>{
-    //         return import('./modules/customer/skills/skills').then(m=>m.Skills)
-    //     },
-    // },
-    // {
-    //     path:'my-courses',
-    //     pathMatch:'full',
-    //     loadComponent:() =>{
-    //         return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
-    //     },
-    // },
+    {
+        path:'student-dashboard/skills/:id',
+        pathMatch:'full',
+        loadComponent:()=>{
+            return import('./modules/customer/skill-by-id/skill-by-id').then((m=>m.SkillById))
+        },
+          canActivate:[authGuard] 
+    },
+    {
+        path:'student-dashboard/skills',
+        pathMatch:'full',
+        loadComponent:() =>{
+            return import('./modules/customer/skills/skills').then(m=>m.Skills)
+        },
+          canActivate:[authGuard] 
+    },
+    {
+        path:'student-dashboard/my-courses',
+        pathMatch:'full',
+        loadComponent:() =>{
+            return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
+        },
+          canActivate:[authGuard] 
+    },
 
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

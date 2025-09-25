@@ -1,53 +1,51 @@
 <div class="flex flex-col h-screen">
   <!-- Navbar -->
   <nav class="flex justify-between items-center bg-gray-900 px-5 py-3 text-blue-50">
-    <div class="text-lg font-bold">Seller Dashboard</div>
+    <div class="space-x-3 text-blue-50">
+      <div class="text-lg font-bold">Seller Dashboard</div>
+      <div>Welcome, {{name}}</div>
+    </div>
     <ul class="flex gap-5 list-none m-0 p-0">
       <li>
-        <a routerLink="/teacher-dashboard/dashboard-landing-page"
-           routerLinkActive="underline"
-           class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
-           Home
+        <a routerLink="/teacher-dashboard/dashboard-landing-page" routerLinkActive="underline"
+          class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
+          Home
         </a>
       </li>
       <li>
-        <a routerLink="/teacher-dashboard/skills"
-           routerLinkActive="underline"
-           class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
-           Skills
+        <a routerLink="/teacher-dashboard/skills" routerLinkActive="underline"
+          class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
+          Skills
         </a>
       </li>
       <li>
-        <a routerLink="/teacher-dashboard/add-to-listing"
-           routerLinkActive="underline"
-           class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
-           Add to Listing
+        <a routerLink="/teacher-dashboard/add-to-listing" routerLinkActive="underline"
+          class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
+          Add to Listing
         </a>
       </li>
       <li>
-        <a routerLink="/teacher-dashboard/seller-listings"
-           routerLinkActive="underline"
-           class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
-           My Listings
+        <a routerLink="/teacher-dashboard/seller-listings" routerLinkActive="underline"
+          class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
+          My Listings
         </a>
       </li>
       <li>
-        <a routerLink="/teacher-dashboard/order-request"
-           routerLinkActive="underline"
-           class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
-           My Order Requests
+        <a routerLink="/teacher-dashboard/order-request" routerLinkActive="underline"
+          class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
+          My Order Requests
         </a>
       </li>
       <li>
-        <a (click)="LogOut()" routerLink="/" 
-           class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
-           LogOut
+        <a (click)="LogOut()" routerLink="/"
+          class="text-white font-medium transition-colors duration-200 hover:text-blue-200">
+          LogOut
         </a>
       </li>
     </ul>
   </nav>
   <!-- Dashboard Content -->
-  <div class="flex-1 p-5 bg-blue-200">        <!--changed-->
-    <router-outlet></router-outlet>        <!-- children paths mentioned in app.router.ts will appear in routerOutlet here-->
+  <div class="flex-1 p-5 bg-blue-200"> <!--changed-->
+    <router-outlet></router-outlet> <!-- children paths mentioned in app.router.ts will appear in routerOutlet here-->
   </div>
 </div>
