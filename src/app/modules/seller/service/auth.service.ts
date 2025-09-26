@@ -5,20 +5,16 @@ import { Observable } from "rxjs";
 @Injectable({
     providedIn:'root'
 })
-export class AuthService{
+export class SellerService{
     private apiUrl = 'http://localhost:8081/seller/';
      constructor(private http: HttpClient){}
+     res:any=[]
+ role: string = ''
 
-     login(data:{email:string; password:string}): Observable<any>{
-        return this.http.post<any>('http://localhost:8081/login', data,{withCredentials: true})
-     }
      signUp(data:{name:string; email:string; password:string; phone:string}):Observable<any>{
         return this.http.post<any>(this.apiUrl+'signup', data)
      }
-     isLoggedIn():boolean{return !!localStorage.getItem('accessToken')}
-     logout():Observable<any>{
-        return this.http.post<any>('http://localhost:8081/logout',"",{withCredentials: true})
-     }
+     
 
      getSellerDetails():Observable<any>{
       return this.http.get<any>(this.apiUrl)
@@ -28,8 +24,5 @@ export class AuthService{
       return  this.http.put(`http://localhost:8081/seller/${num}/change-status?status=${selectedStatus}`,
           { observe: 'response', responseType: 'text' })
      }
-   //   delete(id:number):Observable<any>{
 
-   //       return  this.http.delete(`http://localhost:8081/seller/delete/${id}`)
-   //   }
 }

@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { AuthService } from '../service/auth.service';
+import { CustService } from '../service/auth.service';
 import { Router } from '@angular/router';
 
 
@@ -22,7 +22,7 @@ export class SkillById {
   skill:Skill={avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
     skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
   }
-  constructor(private service: AuthService, private router:Router){
+  constructor(private service: CustService, private router:Router){
 
     const nav= this.router.getCurrentNavigation();
     const data= nav?.extras.state as {formData: any};

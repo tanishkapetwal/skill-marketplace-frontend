@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, Input, input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../service/auth.service';
+import { CustService } from '../service/auth.service';
 import { Sidebar } from '../sidebar/sidebar';
 import { FormsModule, NgModel } from '@angular/forms';
 @Component({
@@ -20,7 +20,7 @@ export class Skills implements OnInit{
   selectedCategory:string='';
   categories:string[]=[];
 
-  constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router ){
+  constructor(private route: ActivatedRoute, private authService: CustService, private router: Router ){
      const nav= this.router.getCurrentNavigation();
     const data= nav?.extras.state as {formData: any};
     if(data){
