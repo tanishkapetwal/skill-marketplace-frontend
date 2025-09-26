@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../../seller/service/auth.service';
+import { SellerService } from '../../../seller/service/auth.service';
+import { AuthService } from '../../../../core/services/authservice';
 import { Router } from '@angular/router';
+import { Navbar } from "../../../../shared/navbar/navbar";
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, Navbar],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -28,7 +30,7 @@ loginData = {
     this.isLogin = !this.isLogin;
   }
   message:string=''
-  constructor(private authService: AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router:Router,private sellerService: SellerService) { }
   onLogin(form: any) {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
@@ -52,7 +54,7 @@ loginData = {
   }
 
   onSignup(form: any) {
-    this.authService.signUp(this.signupData).subscribe({
+    this.sellerService.signUp(this.signupData).subscribe({
       next: (res) => {
         console.log('Signup succesful:', res);
         if(res && res.token){

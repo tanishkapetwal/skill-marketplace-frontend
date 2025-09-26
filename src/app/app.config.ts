@@ -7,7 +7,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http'
 import { adminAuthInterceptor } from './modules/admin/service/auth-interceptor'
 
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome'
-import { userdetailsInterceptor } from './interceptors/userdetails-interceptor'
+import { userdetailsInterceptor } from './core/interceptors/userdetails-interceptor'
   import { CookieService } from 'ngx-cookie-service'
 
 
@@ -18,8 +18,8 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),    
-    provideHttpClient(withInterceptors([sellerAuthInterceptor])),   
-    provideHttpClient(withInterceptors([adminAuthInterceptor])),
+    
+    
      provideHttpClient(withInterceptors([userdetailsInterceptor])),
      CookieService
   ],

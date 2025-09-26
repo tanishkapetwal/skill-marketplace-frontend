@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
+import { CustService } from '../service/auth.service';
 import { CommonModule } from '@angular/common';
 import { Sidebar } from "../sidebar/sidebar";
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class MyCourses implements OnInit {
 
-  constructor(private service: AuthService){}
+  constructor(private service: CustService){}
 
   orders:Array<Order> = []
   customer:Customer={id: 0,userEmail: "",userName: "",userPhone: ""}
@@ -22,19 +22,20 @@ export class MyCourses implements OnInit {
   ngOnInit() {
     this.service.getStudentDetails().subscribe((res: any) => {
       this.customer = res
-      console.log(res)
     });
+    this.getOrders()
+    
+  }
+  getOrders(){
     this.service.orders().subscribe((res)=>{
       this.orders = res;
-      console.log(this.orders)
     })
-    
   }
   rate(orderId:number,ratingValue:number){
     this.selectRating = ratingValue;
-    this.service.rateOrder(orderId, ratingValue).subscribe((res)=>{
+    this.service.rateOrder(orderId, ratingValue).subscribe((res:any)=>{
       this.ratingSubmitted=true;
-      console.log(this.ratingSubmitted)
+      this.getOrders()
     });
   }
 }

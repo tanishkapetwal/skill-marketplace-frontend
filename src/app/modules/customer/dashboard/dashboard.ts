@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AuthService } from '../service/auth.service';
+import { CustService } from '../service/auth.service';
 import { ActivatedRoute, ParamMap, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { Skills } from '../skills/skills';
 import { NgIf } from '@angular/common';
@@ -30,7 +30,7 @@ export class Dashboard {
   skills: Array<Skill> = []
   custID: number = 0
   notifications: notifications[] = []
-  constructor(private authService: AuthService, private router: Router,
+  constructor(private custService: CustService, private router: Router,
     private route: ActivatedRoute, private notificationService: NotificationService) {
     this.getStudent(),
       this.getSkills(),
@@ -54,7 +54,7 @@ export class Dashboard {
   }
 
   getStudent() {
-    this.authService.getStudentDetails().subscribe((res: any) => {
+    this.custService.getStudentDetails().subscribe((res: any) => {
       console.log(res)
       this.name = res.userName;
       this.custID = res.id;
@@ -62,7 +62,7 @@ export class Dashboard {
     })
   }
   getSkills() {
-    this.authService.getSkills().subscribe((res: any) => {
+    this.custService.getSkills().subscribe((res: any) => {
       console.log(res);
       this.skills = res;
       console.log(this.skills)
@@ -70,7 +70,7 @@ export class Dashboard {
   }
 
   openSkill(id: number) {
-    this.authService.getSkillById(id).subscribe((res: any) => {
+    this.custService.getSkillById(id).subscribe((res: any) => {
       console.log(res);
       this.skill = res;
       console.log(this.skill)

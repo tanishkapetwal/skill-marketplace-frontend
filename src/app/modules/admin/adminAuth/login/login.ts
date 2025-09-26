@@ -1,12 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../service/auth.service';
+import { AdminService } from '../../service/auth.service';
+import { AuthService } from '../../../../core/services/authservice';
 import { NgIf } from '@angular/common';
 import { Route, Router } from '@angular/router';
-
+import { Homepage } from '../../../../shared/homepage/homepage';
+import { Navbar } from "../../../../shared/navbar/navbar";
 @Component({
   selector: 'app-login',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, Navbar],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -31,8 +33,6 @@ export class Login {
   message: string = ''
   constructor(private authService: AuthService, private router:Router) { }
   onLogin(form: any) {
-    // if (this.loginData.email === '' || this.loginData.password === '') { this.message = 'Fill all details!' }
-
 
     this.authService.login(this.loginData).subscribe({
       next: (res) => {

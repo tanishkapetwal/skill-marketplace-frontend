@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthService } from '../service/auth.service';
+import { CustService } from '../service/auth.service';
+import { AuthService } from '../../../core/services/authservice';
 @Component({
   selector: 'app-sidebar',
   imports: [CommonModule],
@@ -11,7 +12,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class Sidebar {
   sidebar=true;
-  constructor(private router: Router, private authservice:AuthService){}
+  constructor(private router: Router, private cust:CustService, private authservice: AuthService){}
   toggleSidebar(){
     this.sidebar=!this.sidebar;
   }
