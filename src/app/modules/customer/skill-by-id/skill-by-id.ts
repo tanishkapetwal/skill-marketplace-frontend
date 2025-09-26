@@ -34,6 +34,7 @@ export class SkillById {
   showModal= false;
   onClick(){
     this.showModal = true;
+    
   }
   closeSkillModal(){
     this.showModal = false;
@@ -46,8 +47,9 @@ export class SkillById {
        console.log('Form Submitted!', this.appointmentData.appointmentEnd);
        
       this.service.orderRequest(this.appointmentData, id).subscribe((res)=>{
-        console.log("completed")
-        this.closeSkillModal()
+        alert('Order Created Successfully');
+        console.log("completed");
+        this.closeSkillModal();
       })
   
       this.service.emailSeller(id).subscribe({
