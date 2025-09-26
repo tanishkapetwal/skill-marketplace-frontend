@@ -9,7 +9,11 @@
              name="Skill-Id"
              required
              min="1"
+             #skillIdCtrl="ngModel"
              class="w-full px-3 py-2 border border-gray-400 rounded text-sm focus:outline-none focus:border-blue-500" />
+        <div *ngIf="skillIdCtrl.invalid" class="text-red-500 text-sm">
+             Skill-Id must be greater than 0
+        </div>
     </div>
     <!-- Title -->
     <div>
@@ -38,8 +42,11 @@
              required
              min="1"
              max="10000"
+             #priceCtrl="ngModel"
              class="w-full px-3 py-2 border border-gray-400 rounded text-sm focus:outline-none focus:border-blue-500" />
-          
+        <div *ngIf=" priceCtrl.invalid" class="text-red-500 text-sm">
+             price must be between ₹1 and ₹50000
+        </div>
     </div>
     <!-- Time -->
     <div>
@@ -50,7 +57,11 @@
              required
              min="1"
              max="50"
+             #timeCtrl="ngModel"
              class="w-full px-3 py-2 border border-gray-400 rounded text-sm focus:outline-none focus:border-blue-500" />
+        <div *ngIf=" timeCtrl.invalid" class="text-red-500 text-sm">
+           time must be between 1 and 100 hours
+        </div>   
     </div>
     <!-- Buttons -->
     <button type="submit"
