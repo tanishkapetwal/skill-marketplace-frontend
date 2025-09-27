@@ -10,7 +10,7 @@ import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [FontAwesomeModule, Sidebar, RouterOutlet],
+  imports: [FontAwesomeModule, Sidebar],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 

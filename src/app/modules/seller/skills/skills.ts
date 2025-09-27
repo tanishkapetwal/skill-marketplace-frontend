@@ -11,15 +11,17 @@ import { Router } from '@angular/router';
 export class SellerSkills {
     constructor(private http:HttpClient,private router:Router){
       const accessToken = localStorage.getItem('accessToken');
-// if (token) {
-//   const payload = JSON.parse(atob(token.split('.')[1]));
-//   console.log('Decoded JWT payload:', payload);
-// }
-      this.http.get("http://localhost:8081/seller/skills").subscribe((res:any)=>{this.SkillsList=res;})
+      this.http.get("http://localhost:8081/seller/skills").subscribe((res:any)=>{
+        this.SkillsList=res;})
     }
-    SkillsList:any[]=[];
+    SkillsList:Skill[]=[];
     redirectPage(num:number,str1:String,str2:String){
       this.router.navigate(['/teacher-dashboard/add-to-listing'],{state:{formData:{skillId:num,name:str1,description:str2}}});
     }
 
 }
+interface Skill{
+category:string;
+description:string;
+id:number;
+name:string; }
