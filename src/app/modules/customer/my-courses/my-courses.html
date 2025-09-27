@@ -1,15 +1,14 @@
-
 <div class="flex ">
      <app-sidebar></app-sidebar>
 
      <div class="w-full text-xs px-20 flex flex-col text-center ">
           <div class="rounded-b-sm p-10 text-5xl font-extrabold bg-blue-50 ">
-              Courses
+               Courses
           </div>
-           @if(ratingSubmitted){
-               <div class="w-[200px] h-10  rounded-xl text-xs bg-blue-100 border-gray-900 p-2.5">
-                    Rating {{selectRating}} submitted succesfully!</div>
-          }   
+          @if(ratingSubmitted){
+          <div class="w-[200px] h-10  rounded-xl text-xs bg-blue-100 border-gray-900 p-2.5">
+               Rating {{selectRating}} submitted succesfully!</div>
+          }
           <div class="mt-16  bg-gray-900 text-white rounded-t-xl border-b-2 flex p-6 justify-around">
                <div class="ml-[-50px]">Order Id</div>
                <div class="ml-[-50px]">Title</div>
@@ -17,12 +16,8 @@
                <div class="ml-[-50px]">Order Date</div>
                <div class="ml-[-50px]">Status</div>
                <div class="ml-[-50px]">Rate</div>
-
-               <!-- <div></div>
-            <div></div> -->
-               <!-- <div></div> -->
           </div>
-         
+
           @for(order of orders; track order.id){
           <div class="border-b-2 border-gray-600 rounded-xl flex p-6 justify-around">
                <div>#{{order.id}}</div>
@@ -48,23 +43,25 @@
                @if(order.status==='COMPLETED'){
                <div>
                     @for(star of [1,2,3,4,5]; track star){
-                    <i (click)="rate(order.id,star)" [class]="star <= selectRating || star<=order.orderRating ? 'fa-solid':'fa-regular'"
+                    <i (click)="rate(order.id,star)"
+                         [class]="star <= selectRating || star<=order.orderRating ? 'fa-solid':'fa-regular'"
                          class=" fa-star cursor-pointer"></i>
-                    }  
+                    }
                </div>
                }
                @else{
 
                <div class="text-gray-600">
                     @for(star of [1,2,3,4,5]; track star){
-                         <i class="fa-regular fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
                     }
                </div>
                }
-
+              
           </div>
           }
-        
+ <mat-paginator  [length]="totalOrders" [pageSize]="pageSize" (page)="onPageChange($event)">
+               </mat-paginator>
      </div>
- 
+
 </div>

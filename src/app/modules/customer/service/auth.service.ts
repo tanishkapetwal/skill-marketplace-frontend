@@ -1,5 +1,5 @@
 import { Component, Injectable } from "@angular/core";
-import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { HttpClient, HttpClientModule ,HttpParams} from '@angular/common/http'
 import { Observable } from "rxjs";
 import { jwtDecode } from 'jwt-decode';
 @Injectable({
@@ -34,14 +34,12 @@ export class CustService {
       return this.http.post<any>(this.apiUrl + 'order/' + id, data)
    }
 
-   // emailSeller(id: number): Observable<any> {
-   //    console.log("Email");
-   //    const data = "email"
-   //    return this.http.post<any>(this.apiUrl + 'email/' + id, {})
-   // }
-   orders(): Observable<any> {
-      return this.http.get<any>(this.apiUrl + 'all-orders')
+   orders(pageIndex:number): Observable<any> {
+      const params = new HttpParams()
+      .set('page', pageIndex.toString())
+      return this.http.get<any>(`${this.apiUrl}orders`, {params})
    }
+   
    rateOrder(orderId: number, ratingValue: number): Observable<any> {
       return this.http.post<any>(this.apiUrl + `order/${orderId}/rate?ratingValue=${ratingValue}`, '',
          { responseType: 'text' as 'json' })
