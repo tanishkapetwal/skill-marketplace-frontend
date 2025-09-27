@@ -20,7 +20,7 @@ export class CustomerList {
         console.log(this.SkillsList);
       })
     }
-    SkillsList:any[]=[];
+    SkillsList:Customer[]=[];
     deleteSkill(num:number){
       this.http.delete(`http://localhost:8081/admin/remove/customer/${num}`).subscribe({
         next: () => {alert('Deleted successfully!');window.location.reload();},
@@ -28,4 +28,10 @@ export class CustomerList {
       });
     }
 
+}
+interface Customer{
+id:number
+userEmail:string
+userName:string
+userPhone:number
 }

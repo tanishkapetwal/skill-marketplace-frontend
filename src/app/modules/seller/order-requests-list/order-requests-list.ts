@@ -13,12 +13,12 @@ export class OrderRequestsList {
     constructor(private http:HttpClient, private auth:SellerService){
       const accessToken = localStorage.getItem('accessToken');
       this.http.get("http://localhost:8081/seller/order-request").subscribe((res:any)=>{
-        console.log(res),
-        this.SkillsList=res;
+        
+        this.SkillsList=res;console.log(this.SkillsList);
       console.log(this.SkillsList)});
   
     }
-    SkillsList:any[]=[];
+    SkillsList:Skill[]=[];
     statuses: string[]=[/*'PENDING',*/'ACCEPTED','REJECTED',/*'COMPLETED'*/];
     statuses1: string[]=[/*'ACCEPTED',*/'COMPLETED'];
     statuses2: string[]=[];
@@ -31,4 +31,12 @@ export class OrderRequestsList {
     }
 
 
+}
+interface Skill{
+  id:number
+ordersCustomerUserName:string
+ordersOrderDate:Date
+ordersSkillsListingSkillsName:string
+ordersStatus:string
+skillsListingPrice:number
 }

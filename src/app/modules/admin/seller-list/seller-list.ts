@@ -21,7 +21,7 @@ export class SellerList {
         console.log(this.SkillsList);
       })
     }
-    SkillsList:any[]=[];
+    SkillsList:Seller[]=[];
     deleteSkill(num:number){
       this.http.delete(`http://localhost:8081/admin/remove/seller/${num}`).subscribe({
         next: () => {alert('Deleted successfully!');window.location.reload();},
@@ -29,4 +29,10 @@ export class SellerList {
       });
     }
 
+}
+interface Seller{
+id:number
+userEmail:string
+userName:string
+userPhone:number
 }

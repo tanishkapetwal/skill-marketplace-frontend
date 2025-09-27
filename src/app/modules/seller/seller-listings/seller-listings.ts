@@ -11,30 +11,30 @@ import { Component } from '@angular/core';
 export class SellerListings {
     constructor(private http:HttpClient  ,/* private authService: AuthService */){
       const accessToken = localStorage.getItem('accessToken');
-// if (token) {
-//   const payload = JSON.parse(atob(token.split('.')[1]));
-//   console.log('Decoded JWT payload:', payload);
-// }
+
       this.http.get("http://localhost:8081/seller/skill-listings").subscribe((res:any)=>{
-        console.log(res),
-        this.SkillsList=res;
+        
+        this.SkillsList=res;console.log(this.SkillsList);
       console.log(this.SkillsList)});
   
     }
-    SkillsList:any[]=[];
-    // deleted:any;
+    SkillsList:Skill[]=[];
     callFunc(num:number){
       this.http.delete(`http://localhost:8081/seller/delete/${num}`).subscribe({
         next: () => {alert('Deleted successfully!');window.location.reload();},
         error: (err) => alert('Error deleting: ' + err.message)
       });
-      // console.log("delete calling")
-      //  this.authService.delete(num).subscribe((res)=>{
-      //               console.log(res)
-
-      // });
-        
-      // window.location.reload(); 
       }
     }
-
+interface Skill{
+      
+avgRating:number
+description:string
+id:number
+price:number
+sellerUserName:string
+skillsCategory:string
+skillsDescription:string
+skillsName:string
+time:number
+title:string }

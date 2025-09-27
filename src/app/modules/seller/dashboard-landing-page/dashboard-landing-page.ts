@@ -21,8 +21,8 @@ export class DashboardLandingPage {
         this.OrdersList=res;
       console.log(this.OrdersList)});
     }
-    SkillsList:any[]=[];
-    OrdersList:any[]=[];
+    SkillsList:Skill[]=[];
+    OrdersList:Order[]=[];
     exploreMore(){
       this.router.navigate(['/teacher-dashboard/skills']);
     }
@@ -33,3 +33,23 @@ export class DashboardLandingPage {
       this.router.navigate(['/teacher-dashboard/order-request']);
     }
 }
+interface Order{
+  id:number
+ordersCustomerUserName:string
+ordersOrderDate:Date
+ordersSkillsListingSkillsName:string
+ordersStatus:string
+skillsListingPrice:number
+}
+interface Skill{
+      
+avgRating:number
+description:string
+id:number
+price:number
+sellerUserName:string
+skillsCategory:string
+skillsDescription:string
+skillsName:string
+time:number
+title:string }

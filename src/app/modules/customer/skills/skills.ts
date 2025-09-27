@@ -6,7 +6,7 @@ import { Sidebar } from '../sidebar/sidebar';
 import { FormsModule, NgModel } from '@angular/forms';
 @Component({
   selector: 'app-skills',
-  imports: [NgFor, Sidebar,FormsModule],
+  imports: [Sidebar,FormsModule],
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })

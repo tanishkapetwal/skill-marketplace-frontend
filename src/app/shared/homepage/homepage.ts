@@ -5,7 +5,7 @@ import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-homepage',
-  imports: [NgStyle, RouterLink, Navbar],
+  imports: [ RouterLink, Navbar],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css'
 })

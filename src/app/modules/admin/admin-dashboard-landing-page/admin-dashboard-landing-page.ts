@@ -22,8 +22,8 @@ export class AdminDashboardLandingPage {
         this.CustomerList=res;
       console.log(this.CustomerList)});
     }
-    SkillsList:any[]=[];
-    CustomerList:any[]=[];
+    SkillsList:Skill[]=[];
+    CustomerList:Customer[]=[];
     exploreAdmins(){
       this.router.navigate(['/admin-dashboard/admin-list']);
     }
@@ -33,4 +33,15 @@ export class AdminDashboardLandingPage {
     exploreCustomers(){
       this.router.navigate(['/admin-dashboard/customer-list']);
     }
+}
+interface Skill{
+category:string;
+description:string;
+id:number;
+name:string; }
+interface Customer{
+id:number
+userEmail:string
+userName:string
+userPhone:number
 }
