@@ -10,9 +10,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   const expectedRole = route.data['expectedRole'];
   const userRole = auth.getUser()
 
-
-  console.log("auth guard userRole", userRole)
-  console.log("auth guard expectedRole", expectedRole)
   if (auth.isLoggedIn()) {
     if(userRole == expectedRole)
     {
@@ -31,18 +28,6 @@ export const authGuard: CanActivateFn = (route, state) => {
     
     return router.navigate(["/"])
   }
-  // else if (!auth.isLoggedIn()) {
-  //   return router.createUrlTree(['/'])
-  // }
-  // else if (userRole == 'CUSTOMER') {
-  //   return false
-  // }
-  // else if (userRole == 'SELLER') {
-  //   return router.createUrlTree(['teacher/login'])
-  // }
-  // else if (userRole == 'ADMIN') {
-  //   return router.createUrlTree(['admin/login'])
-  // }
   else {
     // return router.createUrlTree(['/'])
     router.navigate([-1]);
