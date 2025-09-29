@@ -15,7 +15,7 @@
              Skill-Id must be greater than 0
         </div>
     </div>
-    <!-- Title -->
+    
     <div>
       <label class="block font-bold mb-1">Title</label>
       <input type="text"
@@ -24,7 +24,7 @@
              required
              class="w-full px-3 py-2 border border-gray-400 rounded text-sm focus:outline-none focus:border-blue-500" />
     </div>
-    <!-- Description -->
+    
     <div>
       <label class="block font-bold mb-1">Description</label>
       <textarea [(ngModel)]="listingData.description"
@@ -32,7 +32,7 @@
                 required
                 class="w-full px-3 py-2 border border-gray-400 rounded text-sm focus:outline-none focus:border-blue-500"></textarea>
     </div>
-    <!-- Price -->
+    
     <div>
       <label class="block font-bold mb-1">Price</label>
       <input type="number"
@@ -48,7 +48,7 @@
              price must be between ₹1 and ₹50000
         </div>
     </div>
-    <!-- Time -->
+    
     <div>
       <label class="block font-bold mb-1">Time (in hours)</label>
       <input type="number"
@@ -56,15 +56,15 @@
              name="time"
              required
              min="1"
-             max="50"
+             max="100"
              #timeCtrl="ngModel"
              class="w-full px-3 py-2 border border-gray-400 rounded text-sm focus:outline-none focus:border-blue-500" />
         <div *ngIf=" timeCtrl.invalid" class="text-red-500 text-sm">
            time must be between 1 and 100 hours
         </div>   
     </div>
-    <!-- Buttons -->
-    <button type="submit"
+    
+    <button type="submit"  [disabled]=" listingData.price <=0 || listingData.time<=0"
             class="w-full px-4 py-2 bg-gray-900 text-white font-bold rounded hover:bg-gray-600 transition">
       Submit
     </button>

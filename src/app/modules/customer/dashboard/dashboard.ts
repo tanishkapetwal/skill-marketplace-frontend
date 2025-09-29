@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CustService } from '../service/auth.service';
 import { ActivatedRoute, ParamMap, Router, RouterLink, RouterOutlet } from '@angular/router';
@@ -6,7 +6,8 @@ import { Skills } from '../skills/skills';
 import { NgIf } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
 import { NotificationService } from '../service/notification.service';
-import { student } from '../interfaces/student';
+import { notifications, skillList, student } from '../interfaces/student';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -28,14 +29,19 @@ export class Dashboard {
   }
 
   name: string = ''
-  skills: Array<Skill> = []
+  skills: any=[]
   custID: number = 0
-  notifications: notifications[] = []
+  notifications: Array<notifications>=[]
+
+@ViewChild(MatPaginator) paginator!: MatPaginator;
+   totalOrders=0;
+    pageSize=6
+    pageIndex = 0;
+
   constructor(private custService: CustService, private router: Router,
     private route: ActivatedRoute, private notificationService: NotificationService) {
     this.getStudent(),
-      this.getSkills(),
-
+      this.getSkills(this.pageIndex),
 
       this.route.paramMap.subscribe((params: ParamMap) => {
         const id = params.get('id');
@@ -62,11 +68,9 @@ export class Dashboard {
       this.notificationService.setCustId(this.custID)
     })
   }
-  getSkills() {
-    this.custService.getSkills().subscribe((res: any) => {
-      console.log(res);
-      this.skills = res;
-      console.log(this.skills)
+  getSkills(pageIndex:number) {
+    this.custService.getSkills(pageIndex).subscribe((res:any) => {
+      this.skills = res.content;
     })
   }
 
@@ -91,19 +95,5 @@ export class Dashboard {
   }
 }
 interface Skill {
-  avgRating: number
-  description: string
-  id: number
-  price: number
-  sellerUserName: string
-  skillsCategory: string
-  skillsDescription: string
-  skillsName: string
-  time: number
-  title: string
-}
-interface notifications{
-  orderId: number,
-  message: string
 
 }

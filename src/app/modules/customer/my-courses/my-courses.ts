@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Sidebar } from "../sidebar/sidebar";
 import { FormsModule } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Order, skillList } from '../interfaces/student';
+import { student } from '../interfaces/student';
 
 
 @Component({
@@ -17,8 +19,8 @@ export class MyCourses implements OnInit {
   constructor(private service: CustService){}
 
   orders:Array<Order> = []
-  customer:Customer={id: 0,userEmail: "",userName: "",userPhone: ""}
-  skills:Array<Skill>=[]
+  customer:student={id: 0,userEmail: "",userName: "",userPhone: ""}
+  skills:Array<skillList>=[]
   selectRating:number=0
   ratingSubmitted=false;
  @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -50,23 +52,4 @@ export class MyCourses implements OnInit {
       this.getOrders()
     });
   }
-}
-interface Customer{
-  id: number,userEmail:string,userName: string,userPhone: string
-}
-interface Skill {
-  avgRating: number
-  description: string
-  id: number
-  price: number
-  sellerUserName: string
-  skillsCategory: string
-  skillsDescription: string
-  skillsName: string
-  time: number
-  title: string
-}
-interface Order{  appointmentEnd: string,appointmentStart: string,
-  id: number,orderDate: string,orderRating: number,skillsListingId: number,
-  skillsListingSellerUserName: string,skillsListingTitle: string  ,status: string
 }

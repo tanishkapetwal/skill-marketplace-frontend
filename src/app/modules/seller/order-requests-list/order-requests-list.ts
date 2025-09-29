@@ -27,7 +27,8 @@ export class OrderRequestsList {
     callFunc(num:number){
      this.auth.changeStatus(num,this.selectedStatus ).subscribe({
         next: (res) => {console.log(res);alert(`Status updated successfully! ${res}`);window.location.reload();},
-        error: (err) => {window.location.reload();alert('Status updated!');}
+        error: (err) => {window.location.reload();alert('Status updated!');console.log(err);
+        }
       });
     }
 

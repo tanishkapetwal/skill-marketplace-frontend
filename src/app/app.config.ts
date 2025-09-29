@@ -1,10 +1,9 @@
 import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core'
 import { provideRouter } from '@angular/router'
 
-import { sellerAuthInterceptor } from './modules/seller/service/auth.interceptor'
 import { routes } from './app.routes';
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http'
-import { adminAuthInterceptor } from './modules/admin/service/auth-interceptor'
+
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { userdetailsInterceptor } from './core/interceptors/userdetails-interceptor'

@@ -1,8 +1,9 @@
 import { Component, Injectable } from "@angular/core";
-import { HttpClient, HttpClientModule ,HttpParams} from '@angular/common/http'
+import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http'
 import { Observable } from "rxjs";
 import { jwtDecode } from 'jwt-decode';
 import { student } from "../interfaces/student";
+import { PaginatedOrders, skillList } from "../interfaces/student";
 @Injectable({
    providedIn: 'root'
 })
@@ -17,32 +18,34 @@ export class CustService {
    signUp(data: { name: string; email: string; password: string; phone: string }): Observable<any> {
       return this.http.post<any>(this.apiUrl + 'signup', data)
    }
-   
 
    getStudentDetails(): Observable<student> {
       this.res = this.http.get<student>(this.apiUrl);
       return this.res;
    }
-   getSkills(): Observable<any> {
-      return this.http.get(this.apiUrl + 'skills')
-   }
-   getSkillById(id: any): Observable<any> {
-      return this.http.get(this.apiUrl + 'skills/' + id)
-   }
-
-   orderRequest(data: { appointmentStart: string; appointmentEnd: string }, id: number): Observable<any> {
-      console.log(data, id);
-      return this.http.post<any>(this.apiUrl + 'order/' + id, data)
-   }
-
-   orders(pageIndex:number): Observable<any> {
+   getSkills(pageIndex: number): Observable<any> {
+      console.log("getSkills");
+      
       const params = new HttpParams()
-      .set('page', pageIndex.toString())
-      return this.http.get<any>(`${this.apiUrl}orders`, {params})
+         .set('page', pageIndex.toString())
+      return this.http.get<any>(this.apiUrl + 'skills', { params })
    }
-   
-   rateOrder(orderId: number, ratingValue: number): Observable<any> {
-      return this.http.post<any>(this.apiUrl + `order/${orderId}/rate?ratingValue=${ratingValue}`, '',
+   getSkillById(id: number): Observable<skillList> {
+      return this.http.get<skillList>(this.apiUrl + 'skills/' + id)
+   }
+
+   orderRequest(data: { appointmentStart: string; appointmentEnd: string }, id: number): Observable<void> {
+      return this.http.post<void>(this.apiUrl + 'order/' + id, data)
+   }
+
+   orders(pageIndex: number): Observable<PaginatedOrders> {
+      const params = new HttpParams()
+         .set('page', pageIndex.toString())
+      return this.http.get<PaginatedOrders>(`${this.apiUrl}orders`, { params })
+   }
+
+   rateOrder(orderId: number, ratingValue: number): Observable<string> {
+      return this.http.post<string>(this.apiUrl + `order/${orderId}/rate?ratingValue=${ratingValue}`, '',
          { responseType: 'text' as 'json' })
    }
 }

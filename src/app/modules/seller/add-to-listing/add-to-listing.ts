@@ -17,8 +17,8 @@ export class AddToListing {
   listingData = {
     title: '',
     description: '',
-    price: 0,
-    time: 0
+    price: 1,
+    time: 1
   };
 
   constructor( private http: HttpClient,private router:Router) {

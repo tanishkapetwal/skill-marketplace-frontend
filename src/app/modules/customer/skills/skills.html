@@ -1,7 +1,7 @@
 <div class="flex w-full ">
   <app-sidebar></app-sidebar>
-  <div class="bg-gray-100  w-full  flex flex-col px-44 py-[20px]">
-    <div class="rounded-b-sm p-10 flex justify-center text-5xl font-extrabold bg-blue-50 ">
+  <div class="bg-gray-100  w-full  flex flex-col px-44 py-[15px]">
+    <div class="rounded-b-sm p-5 flex justify-center text-5xl font-extrabold bg-blue-50 ">
       Skills
     </div>
     <div class="flex justify-end text-xs space-x-4 items-center">
@@ -18,7 +18,7 @@
       @for(skill of filteredSkills(); track skill.id){
       <div class=" w-52 h-72 rounded-2xl px-[12px] pb-4 bg-white">
         <img class="rounded-2xl mt-[-20px] w-full h-32"
-          src="https://media.geeksforgeeks.org/wp-content/uploads/20240501161048/SQL-Databases.png" />
+          src={{getImg()}} />
         <p class="p-2">{{skill.title}}</p>
         <p class="px-2 text-xs font-bold">{{skill.skillsName}}</p>
         <div class="p-2 flex justify-between">
@@ -40,7 +40,8 @@
       </div>
       }
     </div>
-
+<mat-paginator  [length]="totalElements" [pageSize]="pageSize" (page)="onPageChange($event)">
+               </mat-paginator>
   </div>
   <!-- <div class="relative w-full">
   <div class="flex overflow-x-auto space-x-4 p-4 scrollbar-hide">

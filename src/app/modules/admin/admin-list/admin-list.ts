@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Admin } from '../interfaces/admin';
+import { User } from '../interfaces/seller';
 
 @Component({
   selector: 'app-admin-list',
@@ -15,10 +15,9 @@ export class AdminList {
     constructor(private http:HttpClient,private router:Router){
       const accessToken = localStorage.getItem('accessToken');
 
-      this.http.get("http://localhost:8081/admin/all-admins").subscribe((res:any)=>{this.SkillsList=res;
-        console.log(this.SkillsList);
+      this.http.get<User[]>("http://localhost:8081/admin/all-admins").subscribe((res:User[])=>{this.Admin=res;
       })
     }
-    SkillsList:Admin[]=[];
+    Admin:User[]=[];
 
 }
