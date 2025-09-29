@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-// import { AuthService } from '../service/auth.service';
+import { SkillList } from '../interfaces/skill-list';
 
 @Component({
   selector: 'app-seller-listings',
@@ -18,7 +18,7 @@ export class SellerListings {
       console.log(this.SkillsList)});
   
     }
-    SkillsList:Skill[]=[];
+    SkillsList:SkillList[]=[];
     callFunc(num:number){
       this.http.delete(`http://localhost:8081/seller/delete/${num}`).subscribe({
         next: () => {alert('Deleted successfully!');window.location.reload();},
@@ -26,15 +26,4 @@ export class SellerListings {
       });
       }
     }
-interface Skill{
-      
-avgRating:number
-description:string
-id:number
-price:number
-sellerUserName:string
-skillsCategory:string
-skillsDescription:string
-skillsName:string
-time:number
-title:string }
+

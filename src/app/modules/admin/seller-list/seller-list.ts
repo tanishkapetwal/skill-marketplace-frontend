@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Seller } from '../interfaces/seller';
 
 @Component({
   selector: 'app-seller-list',
@@ -13,10 +14,7 @@ export class SellerList {
 
     constructor(private http:HttpClient,private router:Router){
       const accessToken = localStorage.getItem('accessToken');
-// if (token) {
-//   const payload = JSON.parse(atob(token.split('.')[1]));
-//   console.log('Decoded JWT payload:', payload);
-// }
+
       this.http.get("http://localhost:8081/admin/all-sellers").subscribe((res:any)=>{this.SkillsList=res;
         console.log(this.SkillsList);
       })
@@ -29,10 +27,4 @@ export class SellerList {
       });
     }
 
-}
-interface Seller{
-id:number
-userEmail:string
-userName:string
-userPhone:number
-}
+  }

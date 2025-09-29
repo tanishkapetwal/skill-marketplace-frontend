@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Admin } from '../interfaces/admin';
 
 @Component({
   selector: 'app-admin-list',
@@ -20,10 +21,4 @@ export class AdminList {
     }
     SkillsList:Admin[]=[];
 
-}
-interface Admin{
-id:number
-userEmail:string
-userName:string
-userPhone:number
 }

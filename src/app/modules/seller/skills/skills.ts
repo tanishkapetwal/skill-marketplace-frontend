@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Skill } from '../interfaces/skill';
 
 @Component({
   selector: 'app-skills',
@@ -20,8 +21,3 @@ export class SellerSkills {
     }
 
 }
-interface Skill{
-category:string;
-description:string;
-id:number;
-name:string; }

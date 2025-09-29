@@ -1,7 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SellerService } from '../service/auth.service';
+import { Order } from '../interfaces/order';
 
 @Component({
   selector: 'app-order-requests-list',
@@ -18,7 +19,7 @@ export class OrderRequestsList {
       console.log(this.SkillsList)});
   
     }
-    SkillsList:Skill[]=[];
+    SkillsList:Order[]=[];
     statuses: string[]=[/*'PENDING',*/'ACCEPTED','REJECTED',/*'COMPLETED'*/];
     statuses1: string[]=[/*'ACCEPTED',*/'COMPLETED'];
     statuses2: string[]=[];
@@ -32,11 +33,4 @@ export class OrderRequestsList {
 
 
 }
-interface Skill{
-  id:number
-ordersCustomerUserName:string
-ordersOrderDate:Date
-ordersSkillsListingSkillsName:string
-ordersStatus:string
-skillsListingPrice:number
-}
+
