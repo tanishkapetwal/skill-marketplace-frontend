@@ -26,13 +26,15 @@ export class Skills implements OnInit{
      const nav= this.router.getCurrentNavigation();
     // const data= nav?.extras.state as {formData: any};
     
-    this.categories = [...new Set (this.skills.map(s=>s.skillsCategory))]
+   
    }
   ngOnInit(){    this.getSkills()}
    getSkills(){
     this.authService.getSkills(this.pageIndex).subscribe((res)=>{
         this.totalElements=res.totalElements
         this.skills = res.content
+        console.log(this.skills);
+       this.categories = [...new Set (this.skills.map(s=>s.skillsCategory))]
       })
    }
    getImg(){    
