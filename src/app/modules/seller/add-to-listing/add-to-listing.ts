@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';    //import formsModule
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { SellerService } from '../service/auth.service';
 
 @Component({
   selector: 'app-add-to-listing',
@@ -21,7 +22,7 @@ export class AddToListing {
     time: 1
   };
 
-  constructor( private http: HttpClient,private router:Router) {
+  constructor( private http: HttpClient,private router:Router,private authService:SellerService) {
     const accessToken = localStorage.getItem('accessToken');
     const nav= this.router.getCurrentNavigation();
     const data= nav?.extras.state?.['formData'];
@@ -33,7 +34,7 @@ export class AddToListing {
   }
   reset(form:any){ form.reset();}
   submitListing(form:any) {
-    this.http.post(`http://localhost:8081/seller/add-to-listing/${this.skillId}`, this.listingData)
+    this.authService.addToListing(this.skillId,this.listingData)
       .subscribe({
         next: () => {
           alert('Listing created successfully!');

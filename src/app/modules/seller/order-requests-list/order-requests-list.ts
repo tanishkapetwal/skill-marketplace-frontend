@@ -13,7 +13,7 @@ import { Order } from '../interfaces/order';
 export class OrderRequestsList {
     constructor(private http:HttpClient, private auth:SellerService){
       const accessToken = localStorage.getItem('accessToken');
-      this.http.get("http://localhost:8081/seller/order-request").subscribe((res:any)=>{
+      this.auth.getOrderRequests().subscribe((res:Order[])=>{
         
         this.SkillsList=res;console.log(this.SkillsList);
       console.log(this.SkillsList)});

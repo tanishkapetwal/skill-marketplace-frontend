@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SkillList } from '../interfaces/skill-list';
+import { SellerService } from '../service/auth.service';
 
 @Component({
   selector: 'app-dashboard-landing-page',
@@ -10,11 +11,11 @@ import { SkillList } from '../interfaces/skill-list';
   styleUrl: './dashboard-landing-page.css'
 })
 export class DashboardLandingPage {
-    constructor(private http:HttpClient,private router:Router){
+    constructor(private http:HttpClient,private router:Router,private authService:SellerService){
       const accessToken = localStorage.getItem('accessToken');
 
-      this.http.get("http://localhost:8081/seller/skill-listings").subscribe((res:any)=>{this.SkillsList=res;});
-      this.http.get("http://localhost:8081/seller/order-request").subscribe((res:any)=>{
+      this.authService.getSellerListings().subscribe((res:SkillList[])=>{this.SkillsList=res;});
+      this.authService.getOrderRequests().subscribe((res:Order[])=>{
         console.log(res),
         this.OrdersList=res;
       console.log(this.OrdersList)});

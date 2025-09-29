@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skill } from '../interfaces/seller';
 import { User } from '../interfaces/seller';
+import { AdminService } from '../service/auth.service';
 
 @Component({
   selector: 'app-admin-dashboard-landing-page',
@@ -12,11 +13,11 @@ import { User } from '../interfaces/seller';
 })
 export class AdminDashboardLandingPage {
 
-    constructor(private http:HttpClient,private router:Router){
+    constructor(private http:HttpClient,private router:Router,private authService:AdminService){
       const accessToken = localStorage.getItem('accessToken');
 
-      this.http.get<Array<Skill>>("http://localhost:8081/admin/skills").subscribe((res:Array<Skill>)=>{this.SkillsList=res;});
-      this.http.get<Array<User>>("http://localhost:8081/admin/all-customers").subscribe((res:Array<User>)=>{
+      this.authService.getSkills().subscribe((res:Array<Skill>)=>{this.SkillsList=res;});
+      this.authService.getAllCustomers().subscribe((res:Array<User>)=>{
         this.CustomerList=res;
       });
     }

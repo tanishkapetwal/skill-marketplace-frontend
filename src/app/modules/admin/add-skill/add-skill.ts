@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule, NgModel } from '@angular/forms';    //import formsModule
 import { Router } from '@angular/router';
+import { AdminService } from '../service/auth.service';
 
 @Component({
   selector: 'app-add-skill',
@@ -20,14 +21,14 @@ export class AddSkill {
     category:''
   };
 
-  constructor( private http: HttpClient,private router:Router) {
+  constructor( private http: HttpClient,private router:Router,private authService:AdminService) {
     const accessToken = localStorage.getItem('accessToken');
   }
   reset(form:any){ form.reset();
                     this.listingData.category='';
   }
   submitListing() {
-    this.http.post(`http://localhost:8081/admin/add-skills`, this.listingData)
+    this.authService.addSkills(this.listingData)
       .subscribe({
         next: () => {
           alert('Skill created successfully!');
