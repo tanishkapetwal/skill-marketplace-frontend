@@ -6,6 +6,7 @@ import { Skills } from '../skills/skills';
 import { NgIf } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
 import { NotificationService } from '../service/notification.service';
+import { student } from '../interfaces/student';
 
 
 @Component({
@@ -54,7 +55,7 @@ export class Dashboard {
   }
 
   getStudent() {
-    this.custService.getStudentDetails().subscribe((res: any) => {
+    this.custService.getStudentDetails().subscribe((res: student) => {
       console.log(res)
       this.name = res.userName;
       this.custID = res.id;

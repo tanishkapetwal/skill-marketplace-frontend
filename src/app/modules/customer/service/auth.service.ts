@@ -2,6 +2,7 @@ import { Component, Injectable } from "@angular/core";
 import { HttpClient, HttpClientModule ,HttpParams} from '@angular/common/http'
 import { Observable } from "rxjs";
 import { jwtDecode } from 'jwt-decode';
+import { student } from "../interfaces/student";
 @Injectable({
    providedIn: 'root'
 })
@@ -18,8 +19,8 @@ export class CustService {
    }
    
 
-   getStudentDetails(): Observable<any> {
-      this.res = this.http.get(this.apiUrl);
+   getStudentDetails(): Observable<student> {
+      this.res = this.http.get<student>(this.apiUrl);
       return this.res;
    }
    getSkills(): Observable<any> {
