@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Skill } from '../interfaces/skill';
+import { SellerService } from '../service/auth.service';
 
 @Component({
   selector: 'app-skills',
@@ -10,9 +11,9 @@ import { Skill } from '../interfaces/skill';
   styleUrl: './skills.css'
 })
 export class SellerSkills {
-    constructor(private http:HttpClient,private router:Router){
+    constructor(private http:HttpClient,private router:Router, private authService:SellerService){
       const accessToken = localStorage.getItem('accessToken');
-      this.http.get("http://localhost:8081/seller/skills").subscribe((res:any)=>{
+      this.authService.getSkills().subscribe((res:Skill[])=>{
         this.SkillsList=res;})
     }
     SkillsList:Skill[]=[];
