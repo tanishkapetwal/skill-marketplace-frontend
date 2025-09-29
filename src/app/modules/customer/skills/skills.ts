@@ -65,7 +65,9 @@ export class Skills implements OnInit{
     "https://media.istockphoto.com/id/1138372470/vector/business-hr-concept-human-resources-manager-hiring-employee-for-job.jpg?s=2048x2048&w=is&k=20&c=SO1gD-x38FGteDkQZvAq1Hrr9Jz4BKhD--CotoDkRSg=",
     "https://media.geeksforgeeks.org/wp-content/uploads/20240501161048/SQL-Databases.png",
     "https://media.istockphoto.com/id/1408821734/photo/business-strategy-development-and-growing-growth-plan-financial-management-strategy-for.jpg?s=612x612&w=0&k=20&c=66KZpiB7BvQB_5eFLbQZ_6Z03tzMHLBh1oTR4KTHA9k=",
-    "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D"
+    "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzB8fHRlY2hub2xvZ3l8ZW58MHx8MHx8fDA%3D",
+     "https://www.theforage.com/blog/wp-content/uploads/2022/09/tech-companies.jpg",
+     "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
   ]
 }
 

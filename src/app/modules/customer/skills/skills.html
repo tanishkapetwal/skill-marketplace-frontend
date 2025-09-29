@@ -17,8 +17,7 @@
 
       @for(skill of filteredSkills(); track skill.id){
       <div class=" w-52 h-72 rounded-2xl px-[12px] pb-4 bg-white">
-        <img class="rounded-2xl mt-[-20px] w-full h-32"
-          src={{getImg()}} />
+        <img class="rounded-2xl mt-[-20px] w-full h-32" src={{getImg()}} />
         <p class="p-2">{{skill.title}}</p>
         <p class="px-2 text-xs font-bold">{{skill.skillsName}}</p>
         <div class="p-2 flex justify-between">
@@ -27,9 +26,10 @@
             <p><i class="fa fa-inr w-3.5 mr-1.5"></i>{{skill.price}}</p>
 
           </div>
-          <div class="relative flex h-[45px] w-[45px] items-center justify-center rounded-full border-4 border-blue-200"
-            style="background: conic-gradient(#95BBF8 calc({{skill.avgRating}} * 20%), transparent calc({{skill.avgRating}} * 20%));">
-            <span class="text-xs font-bold text-gray-900">{{skill.avgRating * 20}}%</span>
+          <div class="relative flex h-[45px] w-[45px] items-center justify-center rounded-full border-4 border-red-200"
+            style="background: conic-gradient(#f3d3eb calc({{skill.avgRating}} * 20%), transparent calc({{skill.avgRating}} * 20%));">
+            <span class="text-xs font-bold text-gray-900">{{skill.avgRating * 20}} <i
+                class="fa-solid fa-heart text-red-500"></i></span>
           </div>
         </div>
         <div class="bg-gray-900 mb-[-5px] text-white mx-3 p-2 rounded-2xl flex justify-center">
@@ -40,8 +40,8 @@
       </div>
       }
     </div>
-<mat-paginator  [length]="totalElements" [pageSize]="pageSize" (page)="onPageChange($event)">
-               </mat-paginator>
+    <mat-paginator [length]="totalElements" [pageSize]="pageSize" (page)="onPageChange($event)">
+    </mat-paginator>
   </div>
   <!-- <div class="relative w-full">
   <div class="flex overflow-x-auto space-x-4 p-4 scrollbar-hide">

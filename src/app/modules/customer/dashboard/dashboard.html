@@ -17,9 +17,26 @@
           <button class="py-[3px] px-4 text-gray-700 focus:outline-none">
             <i class="fa-solid fa-search"></i>
           </button>
-          <input type="search" placeholder="Search..."
-            class="py-[3px] px-4 rounded-r-md focus:outline-none placeholder-gray-700" />
+          <div class="grid">
+            <!-- Container for the search input and dropdown list -->
+            <div class="search-container relative">
+              <input type="text" [(ngModel)]="searchText" placeholder="Search..."
+                class="py-[3px] px-4 rounded-md focus:outline-none placeholder-gray-700 w-full" />
+
+              <!-- The dropdown list -->
+              <ul *ngIf="searchText"
+                class="text-[10px] absolute z-10 w-full opacity-90 bg-white border border-gray-300 rounded-b-md shadow-lg mt-1 max-h-48 overflow-y-auto">
+                @for(link of links | linkFilter:searchText ; track link){
+                <li class="p-2 hover:bg-gray-100">
+                  <a [routerLink]="link.url">{{link.title}}</a>
+                </li>
+                }
+              </ul>
+            </div>
+          </div>
+
         </div>
+
         <div (click)="notificationModal()"
           class="bg-gray-900 text-white p-2 rounded-full w-8 h-8 flex flex-col items-center ">
           <i class="fas fa-bell">
@@ -40,11 +57,10 @@
         <h4>Active Courses</h4>
         <button (click)="explore(skills)" class="text-[10px] py-2 px-3 border-2 rounded-4xl">See All</button>
       </div>
-      <div class="flex justify-items-start space-x-8 shadow-blue-200">
+      <div class="flex justify-center items-center space-x-8 shadow-blue-200">
         @for(skill of skills.slice(0,3); track skill.id){
         <div class="w-52 rounded-2xl px-[12px] pb-4 bg-white">
-          <img class="rounded-2xl mt-[-20px] w-full h-32"
-            src="https://media.geeksforgeeks.org/wp-content/uploads/20240501161048/SQL-Databases.png" />
+          <img class="rounded-2xl mt-[-20px] w-full h-32" src={{getImg()}} />
           <p class="p-2">{{skill.title}}</p>
           <div class="p-2 flex justify-between">
             <div class="text-xs text-gray-900">
@@ -52,13 +68,14 @@
               <p><i class="fa fa-inr w-3.5 mr-1.5"></i>{{skill.price}}</p>
             </div>
             <div
-              class="relative flex h-[45px] w-[45px] items-center justify-center rounded-full border-4 border-blue-200"
+              class="relative flex h-[45px] w-[45px] items-center justify-center rounded-full border-4 border-red-200"
               style="background: conic-gradient(#95BBF8 calc({{skill.avgRating}} * 20%), transparent calc({{skill.avgRating}} * 20%));">
-              <span class="text-xs font-bold text-gray-900">{{skill.avgRating * 20}}%</span>
+              <span class="text-xs font-bold text-gray-900">{{skill.avgRating * 20}} <i
+                  class="fa-solid fa-heart text-red-500"></i></span>
             </div>
           </div>
           <div class="bg-blue-100 p-2 rounded-2xl flex justify-center">
-            <button class="text-center text-xs hover:ring-blue-300" (click)="openSkill(skill.id)">
+            <button class="text-center text-xs hover:ring-blue-300 cursor-pointer" (click)="openSkill(skill.id)">
               Explore Now
             </button>
           </div>
@@ -79,13 +96,13 @@
         ✕
       </button>
       <div class="text-xs ">
-     @if(notifications.length){
-       @for(n of notifications; track n.orderId){
-         <div class="border-b-2 border-b-gray-100 mt-[3px]">
-           {{n.message}} of order id {{n.orderId}}
-         </div>
-      }
-     }
+        @if(notifications.length){
+        @for(n of notifications; track n.orderId){
+        <div class="border-b-2 border-b-gray-100 mt-[3px]">
+          {{n.message}} of order id {{n.orderId}}
+        </div>
+        }
+        }
       </div>
     </div>
   </div>

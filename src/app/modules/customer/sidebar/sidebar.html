@@ -1,4 +1,4 @@
-<div class="flex flex-col h-[100vh] rounded-r-3xl bg-gray-900 transition-all duration-1000"
+<div class="flex flex-col h-[100vh] rounded-r-3xl bg-gray-900 transition-all duration-1000 "
     [class]="sidebar?'w-[200px]':'w-[100px]' ">
     <header class="p-4 flex mb-9" [class]="sidebar?'justify-end': 'justify-center'">
         <!-- Your buttons are fine, but ensure they don't break the layout. -->
@@ -19,6 +19,13 @@
             </a>
         </div>
         
+        <div class="p-4">
+            <a href="student-dashboard/skills" [class]="!sidebar?'flex justify-center items-center':'justify-items-start'"
+                class="sidebarLinks text-white">
+                <i class="fa-solid fa-book"></i>
+                <span class="p-2 transition-all duration-700" [class]="sidebar?'visible':'hidden'">Skills</span>
+            </a>
+        </div>
         <div class="p-4">
             <a href="student-dashboard/my-courses" [class]="!sidebar?'flex justify-center items-center':'justify-items-start'"
                 class="sidebarLinks text-white">
@@ -41,4 +48,7 @@
         </div>
         </div>
     </ul>
+    <div class="text-white text-[10px] mt-40 ml-10"  [class]="!sidebar?'hidden':'justify-center items-center'">
+        Copyright &copy; 2025
+    </div>
 </div>
