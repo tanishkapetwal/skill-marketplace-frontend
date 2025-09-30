@@ -1,6 +1,6 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule, NgModel } from '@angular/forms';    //import formsModule
+import { FormsModule } from '@angular/forms';    //import formsModule
 import { Router } from '@angular/router';
 import { AdminService } from '../service/auth.service';
 

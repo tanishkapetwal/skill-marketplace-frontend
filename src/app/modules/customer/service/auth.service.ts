@@ -1,7 +1,6 @@
-import { Component, Injectable } from "@angular/core";
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http'
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable } from "rxjs";
-import { jwtDecode } from 'jwt-decode';
 import { student } from "../interfaces/student";
 import { PaginatedOrders, skillList } from "../interfaces/student";
 @Injectable({

@@ -1,5 +1,5 @@
-import { Component, Injectable } from "@angular/core";
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import { Injectable } from "@angular/core";
+import { HttpClient } from '@angular/common/http'
 import { Observable } from "rxjs";
 import { listingData } from "../interfaces/listingData";
 import { SkillList } from "../interfaces/SkillList";

@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CustService } from '../service/auth.service';
-import { ActivatedRoute, ParamMap, Router, RouterLink, RouterOutlet } from '@angular/router';
-import { Skills } from '../skills/skills';
+import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Sidebar } from '../sidebar/sidebar';
 import { NotificationService } from '../service/notification.service';

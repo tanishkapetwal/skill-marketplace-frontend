@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { CustService } from '../service/auth.service';
 import { AuthService } from '../../../core/services/authservice';
 @Component({

@@ -1,10 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AdminService } from '../../service/auth.service';
 import { AuthService } from '../../../../core/services/authservice';
 import { NgIf } from '@angular/common';
-import { Route, Router } from '@angular/router';
-import { Homepage } from '../../../../shared/homepage/homepage';
+import { Router } from '@angular/router';
 import { Navbar } from "../../../../shared/navbar/navbar";
 @Component({
   selector: 'app-login',

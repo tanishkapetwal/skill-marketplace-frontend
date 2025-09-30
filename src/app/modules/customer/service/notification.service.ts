@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import {Client, CompatClient, Stomp} from '@stomp/stompjs';
+import {Client} from '@stomp/stompjs';
 import { BehaviorSubject } from "rxjs";
 import  SockJs from 'sockjs-client'
 

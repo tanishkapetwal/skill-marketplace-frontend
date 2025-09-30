@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Navbar } from '../navbar/navbar';
-import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-homepage',

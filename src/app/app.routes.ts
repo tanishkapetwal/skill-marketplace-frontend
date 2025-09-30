@@ -15,9 +15,6 @@ import { AddSkill } from './modules/admin/add-skill/add-skill';
 import { AddAdmin } from './modules/admin/add-admin/add-admin';
 import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
-import { Skills } from './modules/customer/skills/skills';
-import { SkillById } from './modules/customer/skill-by-id/skill-by-id';
-import { MyCourses } from './modules/customer/my-courses/my-courses';
 import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [

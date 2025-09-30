@@ -1,7 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/authservice';
-import { Observable } from 'rxjs';
 
 export const authGuard: CanActivateFn = (route, state) => {
 
@@ -29,8 +28,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     return router.navigate(["/"])
   }
   else {
-    // return router.createUrlTree(['/'])
-    router.navigate([-1]);
+    router.navigate([-1]);     // navigates to same page 
     return false;
   }
 };

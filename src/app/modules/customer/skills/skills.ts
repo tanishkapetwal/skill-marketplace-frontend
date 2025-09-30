@@ -1,9 +1,8 @@
-import { NgFor } from '@angular/common';
-import { Component, Input, input, OnInit , ViewChild} from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustService } from '../service/auth.service';
 import { Sidebar } from '../sidebar/sidebar';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { skillList } from '../interfaces/student';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
