@@ -2,7 +2,6 @@
 import { Component } from '@angular/core';
 import { LoaderService } from '../../core/services/loader';
 import { AsyncPipe, NgIf } from '@angular/common';
-import { async } from 'rxjs';
 
 @Component({
   selector: 'app-loader',
