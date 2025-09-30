@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 import { CustService } from '../../../customer/service/auth.service';
 import { AuthService } from '../../../../core/services/authservice';
 import { NgIf } from '@angular/common';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Navbar } from "../../../../shared/navbar/navbar";
 
 @Component({
@@ -38,7 +38,7 @@ export class Login {
     
    }
 
-  onLogin(form: NgForm) {
+  onLogin() {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
       if(res.role==="CUSTOMER"){
@@ -55,7 +55,7 @@ export class Login {
 
   }
 
-  onSignup(form: NgForm) {
+  onSignup() {
     this.custService.signUp(this.signupData).subscribe({
       next: (res) => {
         console.log('Signup succesful:', res);

@@ -31,7 +31,7 @@ loginData = {
   }
   message:string=''
   constructor(private authService: AuthService, private router:Router,private sellerService: SellerService) { }
-  onLogin(form: any) {
+  onLogin() {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
 
@@ -53,7 +53,7 @@ loginData = {
     });
   }
 
-  onSignup(form: any) {
+  onSignup() {
     this.sellerService.signUp(this.signupData).subscribe({
       next: (res) => {
         console.log('Signup succesful:', res);

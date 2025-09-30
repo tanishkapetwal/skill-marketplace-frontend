@@ -32,7 +32,7 @@ export class Login {
   }
   message: string = ''
   constructor(private authService: AuthService, private router:Router) { }
-  onLogin(form: any) {
+  onLogin() {
 
     this.authService.login(this.loginData).subscribe({
       next: (res) => {

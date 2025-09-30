@@ -9,7 +9,7 @@
 
             <div class="card" [class.hidden-card]="!isLogin" [class.visible-card]="isLogin">
                 <h2 class="title">Welcome Back!</h2>
-                <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)" class="space-y-5 text-[12px]">
+                <form #loginForm="ngForm" (ngSubmit)="onLogin()" class="space-y-5 text-[12px]">
                     <div>
                         <label for="email" class=" block text-gray-700 font-medium mb-1">Email</label>
                         <input required type="email" name="email" id="email"
@@ -49,7 +49,7 @@
             </div>
             <div class="card" [class.hidden-card]="isLogin" [class.visible-card]="!isLogin">
                 <h2 class="title">Sign Up</h2>
-                <form #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)" class="space-y-4 text-[12px]">
+                <form #signupForm="ngForm" (ngSubmit)="onSignup()" class="space-y-4 text-[12px]">
 
                     <div>
                         <label class="block text-gray-700 font-medium mb-1">Name</label>
