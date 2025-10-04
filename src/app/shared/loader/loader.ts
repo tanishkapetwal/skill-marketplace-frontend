@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { LoaderService } from '../../core/services/loader';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loader',
-  imports:[NgIf,AsyncPipe],
+  imports:[CommonModule,AsyncPipe],
   template: `
     <div *ngIf="loaderService.isLoading$ | async" class="loader-overlay">
       <div class="spinner"></div>

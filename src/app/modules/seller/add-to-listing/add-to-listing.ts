@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';    //import formsModule
 import { Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { SellerService } from '../service/auth.service';
 
 @Component({
   selector: 'app-add-to-listing',
-  imports: [FormsModule, NgIf],                       //import formsModule
+  imports: [FormsModule, CommonModule],                       //import formsModule
   templateUrl: './add-to-listing.html',
   styleUrl: './add-to-listing.css'
 })

@@ -16,6 +16,7 @@ import { AddAdmin } from './modules/admin/add-admin/add-admin';
 import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
 import { authGuard } from './core/guards/auth-guard';
+import { UpdateSellerPassword } from './modules/seller/update-seller-password/update-seller-password';
 
 export const routes: Routes = [
     {
@@ -52,6 +53,7 @@ export const routes: Routes = [
         component: SellerDashboard,
         children: [
             { path: '', component: DashboardLandingPage,  canActivate:[authGuard],data:{expectedRole:'SELLER'}  },
+            { path: 'update-seller-password', component: UpdateSellerPassword,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
             { path: 'skills', component: SellerSkills,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
             { path: 'add-to-listing', component: AddToListing,  canActivate:[authGuard],data:{expectedRole:'SELLER'}   },
             { path: 'order-request', component: OrderRequestsList, canActivate:[authGuard],data:{expectedRole:'SELLER'}  },

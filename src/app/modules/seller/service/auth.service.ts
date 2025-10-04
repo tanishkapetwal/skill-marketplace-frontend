@@ -12,15 +12,16 @@ import { Order } from "../interfaces/order";
 })
 export class SellerService{
     private apiUrl = 'http://localhost:8081/seller/';
-     constructor(private http: HttpClient){}
-     res:any=[]
- role: string = ''
+    constructor(private http: HttpClient){}
+    role: string = ''
 
      signUp(data:{name:string; email:string; password:string; phone:string}):Observable<any>{
         return this.http.post<any>(this.apiUrl+'signup', data)
      }
      
      sellerResetPassword(email:string){return this.http.post(this.apiUrl+'reset-password',email)}
+
+     sellerNewPassword(PassData:any){return this.http.post(this.apiUrl+'set-password',PassData)}
 
      getSellerDetails():Observable<User>{
       return this.http.get<User>(this.apiUrl)
