@@ -37,7 +37,12 @@ export class Login {
   constructor(private authService: AuthService, private router:Router, private custService:CustService) {
     
    }
-
+  msg:string="New password sent to mail"
+  resetPassword(email:string){
+     this.custService.customerResetPassword(email).subscribe({
+      error:()=>this.msg="Error sending new password"
+     });   alert(this.msg)
+  }
   onLogin() {
     this.authService.login(this.loginData).subscribe({
       next: (res) => {

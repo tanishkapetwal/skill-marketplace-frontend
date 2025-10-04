@@ -25,6 +25,7 @@ export class AdminService{
      deleteCustomer(num:number){return this.http.delete(this.apiUrl+'remove/customer/'+num)}
      deleteSeller(num:number){return this.http.delete(this.apiUrl+'remove/seller/'+num)}
      deleteSkill(num:number){return this.http.delete(this.apiUrl+'remove/skill/'+num)}
+     adminResetPassword(email:string){return this.http.post(this.apiUrl+'reset-password',email)}
 
   
 }

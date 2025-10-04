@@ -29,6 +29,7 @@ loginData = {
 
     this.isLogin = !this.isLogin;
   }
+  msg:string="New password sent to mail"
   message:string=''
   constructor(private authService: AuthService, private router:Router,private sellerService: SellerService) { }
   onLogin() {
@@ -52,7 +53,11 @@ loginData = {
       }
     });
   }
-
+  resetPassword(email:string){
+     this.sellerService.sellerResetPassword(email).subscribe({
+      error:()=>this.msg="Error sending new password"
+     });   alert(this.msg)
+  }
   onSignup() {
     this.sellerService.signUp(this.signupData).subscribe({
       next: (res) => {

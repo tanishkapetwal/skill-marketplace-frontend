@@ -4,6 +4,7 @@ import { AuthService } from '../../../../core/services/authservice';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { Navbar } from "../../../../shared/navbar/navbar";
+import { AdminService } from '../../service/auth.service';
 @Component({
   selector: 'app-login',
   imports: [FormsModule, NgIf, Navbar],
@@ -16,7 +17,7 @@ export class Login {
     'email': '',
     'password': ''
   }
-
+  msg:string="New password sent to mail"
   signupData = {
     'name': '',
     'email': '',
@@ -29,7 +30,12 @@ export class Login {
     this.isLogin = !this.isLogin;
   }
   message: string = ''
-  constructor(private authService: AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router:Router,private adminService:AdminService) { }
+  resetPassword(email:string){
+     this.adminService.adminResetPassword(email).subscribe({
+      error:()=>this.msg="Error sending new password"
+     });   alert(this.msg)
+  }
   onLogin() {
 
     this.authService.login(this.loginData).subscribe({

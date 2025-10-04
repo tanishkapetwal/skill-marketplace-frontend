@@ -27,6 +27,10 @@
                         <div *ngIf="password.invalid && password.touched" class="text-red-500 text-[10px] mt-1">
                             Password is required
                         </div>
+                        <div class="flex mt-1 justify-around text-[10px]">
+                            <a href="#" (click)="resetPassword(loginData.email)" class=" text-right   text-blue-600 hover:underline">Forgot
+                                Password?</a>
+                        </div>
                     </div>
                     <div class="text-center">
                         <input type="submit"

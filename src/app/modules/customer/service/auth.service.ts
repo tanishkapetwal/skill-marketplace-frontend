@@ -47,4 +47,5 @@ export class CustService {
       return this.http.post<string>(this.apiUrl + `order/${orderId}/rate?ratingValue=${ratingValue}`, '',
          { responseType: 'text' as 'json' })
    }
+   customerResetPassword(email:string){return this.http.post(this.apiUrl+'reset-password',email)}
 }
