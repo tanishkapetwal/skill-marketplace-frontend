@@ -48,4 +48,5 @@ export class CustService {
          { responseType: 'text' as 'json' })
    }
    customerResetPassword(email:string){return this.http.post(this.apiUrl+'reset-password',email)}
+   customerNewPassword(PassData:any){return this.http.post(this.apiUrl+'set-password',PassData)}
 }

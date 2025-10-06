@@ -17,6 +17,7 @@ import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
 import { authGuard } from './core/guards/auth-guard';
 import { UpdateSellerPassword } from './modules/seller/update-seller-password/update-seller-password';
+import { UpdateAdminPassword } from './modules/admin/update-admin-password/update-admin-password';
 
 export const routes: Routes = [
     {
@@ -67,6 +68,7 @@ export const routes: Routes = [
         component: AdminDashboard,
         children: [
             { path: '', component: AdminDashboardLandingPage,  canActivate:[authGuard],  data:{expectedRole:'ADMIN'}  },
+            { path: 'update-admin-password', component: UpdateAdminPassword,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
             { path: 'skill-list', component: SkillList,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
             { path: 'seller-list', component: SellerList, canActivate:[authGuard],data:{expectedRole:'ADMIN'}   },
             { path: 'customer-list', component: CustomerList, canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
