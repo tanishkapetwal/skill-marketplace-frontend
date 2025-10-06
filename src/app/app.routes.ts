@@ -16,8 +16,7 @@ import { AddAdmin } from './modules/admin/add-admin/add-admin';
 import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
 import { authGuard } from './core/guards/auth-guard';
-import { UpdateSellerPassword } from './modules/seller/update-seller-password/update-seller-password';
-import { UpdateAdminPassword } from './modules/admin/update-admin-password/update-admin-password';
+import {UpdateCustomerPassword} from './shared/update-password/update-customer-password'
 
 export const routes: Routes = [
     {
@@ -54,7 +53,7 @@ export const routes: Routes = [
         component: SellerDashboard,
         children: [
             { path: '', component: DashboardLandingPage,  canActivate:[authGuard],data:{expectedRole:'SELLER'}  },
-            { path: 'update-seller-password', component: UpdateSellerPassword,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
+            { path: 'update-customer-password', component: UpdateCustomerPassword,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
             { path: 'skills', component: SellerSkills,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
             { path: 'add-to-listing', component: AddToListing,  canActivate:[authGuard],data:{expectedRole:'SELLER'}   },
             { path: 'order-request', component: OrderRequestsList, canActivate:[authGuard],data:{expectedRole:'SELLER'}  },
@@ -68,7 +67,7 @@ export const routes: Routes = [
         component: AdminDashboard,
         children: [
             { path: '', component: AdminDashboardLandingPage,  canActivate:[authGuard],  data:{expectedRole:'ADMIN'}  },
-            { path: 'update-admin-password', component: UpdateAdminPassword,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
+            { path: 'update-customer-password', component: UpdateCustomerPassword,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
             { path: 'skill-list', component: SkillList,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
             { path: 'seller-list', component: SellerList, canActivate:[authGuard],data:{expectedRole:'ADMIN'}   },
             { path: 'customer-list', component: CustomerList, canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
@@ -108,6 +107,15 @@ export const routes: Routes = [
         pathMatch:'full',
         loadComponent:() =>{
             return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
+        },
+          canActivate:[authGuard] ,
+            data:{expectedRole:'CUSTOMER'}
+    },
+    {
+        path:'student-dashboard/update-password',
+        pathMatch:'full',
+        loadComponent:()=>{
+            return import('./shared/update-password/update-customer-password').then((m=>m.UpdateCustomerPassword))
         },
           canActivate:[authGuard] ,
             data:{expectedRole:'CUSTOMER'}

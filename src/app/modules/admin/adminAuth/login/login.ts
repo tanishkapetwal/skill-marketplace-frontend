@@ -31,10 +31,19 @@ export class Login {
   }
   message: string = ''
   constructor(private authService: AuthService, private router:Router,private adminService:AdminService) { }
+  seePassword=false;
+  togglePassword(){
+    this.seePassword = !this.seePassword
+  }
   resetPassword(email:string){
-     this.adminService.adminResetPassword(email).subscribe({
+    if(email===''){
+      alert("Email Id can't be null!")
+    }
+    else{
+       this.authService.resetPassword(email).subscribe({
       error:()=>this.msg="Error sending new password"
      });   alert(this.msg)
+    }
   }
   onLogin() {
 

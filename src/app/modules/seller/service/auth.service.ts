@@ -19,10 +19,6 @@ export class SellerService{
         return this.http.post<any>(this.apiUrl+'signup', data)
      }
      
-     sellerResetPassword(email:string){return this.http.post(this.apiUrl+'reset-password',email)}
-
-     sellerNewPassword(PassData:any){return this.http.post(this.apiUrl+'set-password',PassData)}
-
      getSellerDetails():Observable<User>{
       return this.http.get<User>(this.apiUrl)
      }

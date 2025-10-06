@@ -37,11 +37,20 @@ export class Login {
   constructor(private authService: AuthService, private router:Router, private custService:CustService) {
     
    }
+   seePassword=false;
+   togglePassword(){
+      this.seePassword = !this.seePassword;
+   }
   msg:string="New password sent to mail"
   resetPassword(email:string){
-     this.custService.customerResetPassword(email).subscribe({
+    if(email===''){
+      alert("Email Id can't be null!")
+    }
+    else{
+       this.authService.resetPassword(email).subscribe({
       error:()=>this.msg="Error sending new password"
      });   alert(this.msg)
+    }
   }
   onLogin() {
     this.authService.login(this.loginData).subscribe({
@@ -63,10 +72,10 @@ export class Login {
   onSignup() {
     this.custService.signUp(this.signupData).subscribe({
       next: (res) => {
+        this.loginData.email = res.email;
+        this.loginData.password = res.password;
+        this.onLogin()
         console.log('Signup succesful:', res);
-
-        localStorage.setItem('accessToken', res.accessToken)
-        this.router.navigateByUrl('/student-dashboard')
       },
       error: (err) => {
         console.error('signup failed', err);

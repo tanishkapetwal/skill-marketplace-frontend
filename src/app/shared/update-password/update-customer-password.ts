@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CustService } from '../service/auth.service';
+import { AuthService } from '../../core/services/authservice';
 
 @Component({
   selector: 'app-update-customer-password',
@@ -10,17 +10,17 @@ import { CustService } from '../service/auth.service';
 })
 export class UpdateCustomerPassword {
   
-  PassData = {
-    email: '',
-    password: ''
-  };
+  password=''
 
-  constructor( private authService:CustService) {
+  constructor( private authService:AuthService) {
     const accessToken = localStorage.getItem('accessToken');
   }
-  reset(form:any){ form.reset();}
+  reset(form:any){ 
+    form.reset();
+  }
+  
   submitListing(form:any) {
-      this.authService.customerNewPassword(this.PassData).subscribe(
+      this.authService.customerNewPassword(this.password).subscribe(
         {
           next:()=>{
             alert('Password updated successfully!');

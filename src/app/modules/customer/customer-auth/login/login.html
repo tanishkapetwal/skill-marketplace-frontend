@@ -21,14 +21,23 @@
                     </div>
                     <div>
                         <label for="password" class=" block text-gray-700 font-medium mb-1">Password</label>
-                        <input required type="password" name="password" id="password"
-                            class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                       <div class="flex border  p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                         <input required [type]="seePassword ? 'text' : 'password'" name="password" id="password"
+                            class="w-full placeholder-gray-500 focus:outline-none "
                             placeholder="********" [(ngModel)]="loginData.password" #password="ngModel">
+                        <span (click)="togglePassword()"
+                            [ngClass]="{'show-icon': seePassword, 'hide-icon': !seePassword}">
+                            <!-- Icon or text for show/hide -->
+                            <i *ngIf="!seePassword" class="fas fa-eye"></i>
+                            <i *ngIf="seePassword" class="fas fa-eye-slash"></i>
+                        </span>
+                       </div>
                         <div *ngIf="password.invalid && password.touched" class="text-red-500 text-[10px] mt-1">
                             Password is required
                         </div>
                         <div class="flex mt-1 justify-around text-[10px]">
-                            <a href="#" (click)="resetPassword(loginData.email)" class=" text-right   text-blue-600 hover:underline">Forgot
+                            <a href="#" (click)="resetPassword(loginData.email)"
+                                class=" text-right   text-blue-600 hover:underline">Forgot
                                 Password?</a>
                         </div>
                     </div>

@@ -25,7 +25,11 @@ export class AuthService {
       return this.http.post<any>('http://localhost:8081/logout', "", { withCredentials: true })
    }
    isLoggedIn(): boolean { return !!localStorage.getItem('accessToken') }
-  }
+
+   customerNewPassword(PassData:string){return this.http.post('http://localhost:8081/set-password',PassData)}
+    resetPassword(email:string){return this.http.post('http://localhost:8081/reset-password',email)}
+}
+  
   interface jwtPayload {
    roles: Array<String>;
 }
