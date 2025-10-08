@@ -10,7 +10,7 @@
 .auth-box {
   display: flex;
   width: 800px;
-  height: 550px;
+  height: 600px;
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);

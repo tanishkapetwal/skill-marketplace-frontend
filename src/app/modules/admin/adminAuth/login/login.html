@@ -14,7 +14,8 @@
                         <label for="email" class=" block text-gray-700 font-medium mb-1">Email</label>
                         <input required type="email" name="email" id="email"
                             class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                            placeholder="john@gmail.com" [(ngModel)]="loginData.email" #email="ngModel">
+                            placeholder="john@gmail.com" [(ngModel)]="loginData.email" #email="ngModel"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                         <div *ngIf="email.invalid && email.touched  " class="text-red-500 text-[10px] mt-1">
                             Email is required
                         </div>

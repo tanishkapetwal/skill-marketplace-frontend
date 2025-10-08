@@ -15,30 +15,37 @@
                             <label for="email" class=" block text-gray-700 font-medium mb-1">Email</label>
                             <input required type="email" name="email" id="email"
                                 class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                placeholder="john@gmail.com" [(ngModel)]="loginData.email" #email="ngModel">
+                                placeholder="john@gmail.com" [(ngModel)]="loginData.email" #email="ngModel"
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
                             @if(email.invalid && email.touched){
                             <div class="text-red-500 text-[10px] mt-1">
                                 Email is required
                             </div>}
                         </div>
                         <div>
-                            <label for="password" class=" block text-gray-700 font-medium mb-1">Password</label>
+                            <label for="lpassword" class=" block text-gray-700 font-medium mb-1">Password</label>
                             <div
                                 class="flex border  p-3 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none">
-                                <input required [type]="seePassword ? 'text' : 'password'" name="password" id="password"
-                                    class="w-full placeholder-gray-500 focus:outline-none " placeholder="********"
-                                    [(ngModel)]="loginData.password" #password="ngModel">
+                                <input required [type]="seePassword ? 'text' : 'password'" name="lpassword"
+                                    id="lpassword" class="w-full placeholder-gray-500 focus:outline-none "
+                                    placeholder="********" [(ngModel)]="loginData.password" #lpassword="ngModel"
+                                    pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{8,20}$">
                                 <span (click)="togglePassword()"
                                     [class]="{'show-icon': seePassword, 'hide-icon': !seePassword}">
-                                    <!-- Icon or text for show/hide -->
+
                                     <i *ngIf="!seePassword" class="fas fa-eye"></i>
                                     <i *ngIf="seePassword" class="fas fa-eye-slash"></i>
                                 </span>
                             </div>
-                            @if(password.invalid && password.touched){
-                            <div class="text-red-500 text-[10px] mt-1">
-                                Password is required
-                            </div>}
+                            <!-- Error message for pattern validation -->
+                            <div *ngIf="lpassword.invalid && (lpassword.dirty || lpassword.touched)"
+                                class="text-red-500 mt-1">
+                                <div *ngIf="lpassword.errors?.['pattern']">
+                                    Password must be 8–20 characters long and include numbers, special characters, and
+                                    both uppercase and lowercase letters.
+                                </div>
+                            </div>
+
                             <div class="flex mt-1 justify-around text-[10px]">
                                 <a href="#" (click)="resetPassword(loginData.email)"
                                     class=" text-right   text-blue-600 hover:underline">Forgot
@@ -75,21 +82,43 @@
                             <label class="block text-gray-700 font-medium mb-1">Email</label>
                             <input required type="email" name="email"
                                 class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                placeholder="john@gmail.com" [(ngModel)]="signupData.email" #email="ngModel">
+                                placeholder="john@gmail.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                [(ngModel)]="signupData.email" #semail="ngModel"
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" >
+
+                        <div *ngIf="semail.invalid && (semail.dirty || semail.touched)" class="text-red-500 mt-1">
+                            <div *ngIf="semail.errors?.['required']">Email is required.</div>
+                            <div *ngIf="semail.errors?.['pattern']">Please enter a valid email address.</div>
+                        </div>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">Phone</label>
                             <input required type="text" name="phone"
                                 class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                placeholder="9876*******" [(ngModel)]="signupData.phone" #phone="ngModel">
+                                placeholder="9876*******" [(ngModel)]="signupData.phone" #phone="ngModel"
+                                pattern="^\+?[1-9][0-9]{7,14}$">
+
+                            <div *ngIf="phone.errors?.['pattern']" class="text-red-500 mt-1">
+                                Please enter a valid phone number, including the country code if applicable.
+                            </div>
                         </div>
 
 
-                        <div>
-                            <label class="block text-gray-700 font-medium mb-1">Password</label>
-                            <input required type="password" name="password"
+                        <div class="mb-4">
+                            <label for="password" class="block text-gray-700 font-medium mb-1">Password</label>
+                            <input required type="password" id="password" name="password"
                                 class="w-full placeholder-gray-500 p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-                                placeholder="********" [(ngModel)]="signupData.password" #password="ngModel">
+                                placeholder="********" [(ngModel)]="signupData.password" #password="ngModel"
+                                pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\S+$).{8,20}$">
+
+                            <!-- Error message for pattern validation -->
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                class="text-red-500 mt-1">
+                                <div *ngIf="password.errors?.['pattern']">
+                                    Password must be 8–20 characters long and include numbers, special characters, and
+                                    both uppercase and lowercase letters.
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-1">Bio</label>

@@ -60,10 +60,13 @@ export class Login {
         localStorage.setItem('accessToken', res.accessToken)
         this.router.navigateByUrl('student-dashboard')
         }
+        else{
+          this.message = "Bad Credentials"
+        } 
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.message = err.message
+        this.message = err.error.message
       }
     });
 
@@ -73,11 +76,15 @@ export class Login {
     this.custService.signUp(this.signupData).subscribe({
       next: (res) => {
         this.loginData.email = res.email;
-        this.loginData.password = res.password;
-        this.onLogin()
+        this.loginData.password = res.password; 
+         this.onLogin()
         console.log('Signup succesful:', res);
+
       },
       error: (err) => {
+        if(err.status===400){
+          this.message = 'User already exist';
+        }
         console.error('signup failed', err);
       }
     });

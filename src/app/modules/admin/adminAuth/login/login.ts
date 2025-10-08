@@ -17,7 +17,7 @@ export class Login {
     'email': '',
     'password': ''
   }
-  msg:string="New password sent to mail"
+  msg: string = "New password sent to mail"
   signupData = {
     'name': '',
     'email': '',
@@ -30,33 +30,35 @@ export class Login {
     this.isLogin = !this.isLogin;
   }
   message: string = ''
-  constructor(private authService: AuthService, private router:Router,private adminService:AdminService) { }
-  seePassword=false;
-  togglePassword(){
+  constructor(private authService: AuthService, private router: Router, private adminService: AdminService) { }
+  seePassword = false;
+  togglePassword() {
     this.seePassword = !this.seePassword
   }
-  resetPassword(email:string){
-    if(email===''){
+  resetPassword(email: string) {
+    if (email === '') {
       alert("Email Id can't be null!")
     }
-    else{
-       this.authService.resetPassword(email).subscribe({
-      error:()=>this.msg="Error sending new password"
-     });   alert(this.msg)
+    else {
+      this.authService.resetPassword(email).subscribe({
+        error: () => this.msg = "Error sending new password"
+      }); alert(this.msg)
     }
   }
   onLogin() {
-
     this.authService.login(this.loginData).subscribe({
       next: (res) => {
-        if(res.role==="ADMIN"){
-        localStorage.setItem('accessToken', res.accessToken)
-        this.router.navigateByUrl('admin-dashboard')
+        if (res.role === "ADMIN") {
+          localStorage.setItem('accessToken', res.accessToken)
+          this.router.navigateByUrl('admin-dashboard')
+        }
+        else {
+          this.message = "Bad Credentials"
         }
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.message = 'Bad Credentials'
+        this.message = err.error.message
       }
     });
 

@@ -47,11 +47,14 @@ loginData = {
         console.log(localStorage.getItem('accessToken'));
         this.router.navigateByUrl('teacher-dashboard')
         }    
+        else{
+          this.message = "Bad Credentials"
+        } 
         
       },
       error: (err) => {
         console.error('Login failed', err);
-        this.message = "Bad Credentials"
+        this.message = err.error.message
       }
     });
   }
@@ -74,6 +77,9 @@ loginData = {
         console.log('Signup succesful:', res);
       },
       error: (err) => {
+        if(err.status===400){
+          this.message = 'User already exist';
+        }
         console.error('signup failed', err);
       }
     });
