@@ -58,6 +58,9 @@ export class Login {
       },
       error: (err) => {
         console.error('Login failed', err);
+        if(err.error === null){
+          this.message = "Bad Credentials"
+        }
         this.message = err.error.message
       }
     });
