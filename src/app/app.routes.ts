@@ -17,6 +17,7 @@ import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
 import { authGuard } from './core/guards/auth-guard';
 import { UpdateCustomerPassword } from './shared/update-password/update-customer-password'
+import { loginGuard } from './core/guards/login-guard';
 
 export const routes: Routes = [
     {
@@ -31,14 +32,14 @@ export const routes: Routes = [
         pathMatch: 'full',
         loadComponent: () => {
             return import('./modules/customer/customer-auth/login/login').then((m) => m.Login);
-        }
+        },canActivate:[loginGuard]
     },
     {
         path: 'teacher/login',
         pathMatch: 'full',
         loadComponent: () => {
             return import('./modules/seller/seller-auth/login/login').then((m) => m.Login);
-        }
+        },canActivate:[loginGuard]
     },
     {
 
@@ -46,7 +47,7 @@ export const routes: Routes = [
         pathMatch: 'full',
         loadComponent: () => {
             return import('./modules/admin/adminAuth/login/login').then((m) => m.Login);
-        }
+        },canActivate:[loginGuard]
     },
     {
         path: 'teacher-dashboard',
