@@ -16,7 +16,7 @@ import { AddAdmin } from './modules/admin/add-admin/add-admin';
 import { AdminList } from './modules/admin/admin-list/admin-list';
 import { Dashboard } from './modules/customer/dashboard/dashboard';
 import { authGuard } from './core/guards/auth-guard';
-import {UpdateCustomerPassword} from './shared/update-password/update-customer-password'
+import { UpdateCustomerPassword } from './shared/update-password/update-customer-password'
 
 export const routes: Routes = [
     {
@@ -52,73 +52,82 @@ export const routes: Routes = [
         path: 'teacher-dashboard',
         component: SellerDashboard,
         children: [
-            { path: '', component: DashboardLandingPage,  canActivate:[authGuard],data:{expectedRole:'SELLER'}  },
-            { path: 'update-customer-password', component: UpdateCustomerPassword,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
-            { path: 'skills', component: SellerSkills,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'} },
-            { path: 'add-to-listing', component: AddToListing,  canActivate:[authGuard],data:{expectedRole:'SELLER'}   },
-            { path: 'order-request', component: OrderRequestsList, canActivate:[authGuard],data:{expectedRole:'SELLER'}  },
-            { path: 'seller-listings', component: SellerListings,  canActivate:[authGuard] ,data:{expectedRole:'SELLER'}  },
-            { path: 'dashboard-landing-page', component: DashboardLandingPage, canActivate:[authGuard],data:{expectedRole:'SELLER'}   }
-        ], canActivate:[authGuard] ,data:{expectedRole:'SELLER'} 
-       
+            { path: '', component: DashboardLandingPage, canActivate: [authGuard], data: { expectedRole: 'SELLER' } },
+            { path: 'update-customer-password', component: UpdateCustomerPassword, canActivate: [authGuard], data: { expectedRole: 'SELLER' } },
+            { path: 'skills', component: SellerSkills, canActivate: [authGuard], data: { expectedRole: 'SELLER' } },
+            { path: 'add-to-listing', component: AddToListing, canActivate: [authGuard], data: { expectedRole: 'SELLER' } },
+            { path: 'order-request', component: OrderRequestsList, canActivate: [authGuard], data: { expectedRole: 'SELLER' } },
+            { path: 'seller-listings', component: SellerListings, canActivate: [authGuard], data: { expectedRole: 'SELLER' } },
+            { path: 'dashboard-landing-page', component: DashboardLandingPage, canActivate: [authGuard], data: { expectedRole: 'SELLER' } }
+        ], canActivate: [authGuard], data: { expectedRole: 'SELLER' }
+
     },
     {
         path: 'admin-dashboard',
         component: AdminDashboard,
         children: [
-            { path: '', component: AdminDashboardLandingPage,  canActivate:[authGuard],  data:{expectedRole:'ADMIN'}  },
-            { path: 'update-customer-password', component: UpdateCustomerPassword,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
-            { path: 'skill-list', component: SkillList,  canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
-            { path: 'seller-list', component: SellerList, canActivate:[authGuard],data:{expectedRole:'ADMIN'}   },
-            { path: 'customer-list', component: CustomerList, canActivate:[authGuard],data:{expectedRole:'ADMIN'}  },
-            { path: 'add-skill', component: AddSkill, canActivate:[authGuard] ,data:{expectedRole:'ADMIN'}  },
-            { path: 'add-admin', component: AddAdmin,  canActivate:[authGuard]  ,data:{expectedRole:'ADMIN'} },
-            { path: 'admin-list', component: AdminList,  canActivate:[authGuard]  ,data:{expectedRole:'ADMIN'} },
-            { path: 'admin-dashboard-landing-page', component: AdminDashboardLandingPage,  canActivate:[authGuard] ,data:{expectedRole:'ADMIN'}  }
-        ],  canActivate:[authGuard] ,data:{expectedRole:'ADMIN'} 
+            { path: '', component: AdminDashboardLandingPage, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'update-customer-password', component: UpdateCustomerPassword, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'skill-list', component: SkillList, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'seller-list', component: SellerList, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'customer-list', component: CustomerList, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'add-skill', component: AddSkill, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'add-admin', component: AddAdmin, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'admin-list', component: AdminList, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } },
+            { path: 'admin-dashboard-landing-page', component: AdminDashboardLandingPage, canActivate: [authGuard], data: { expectedRole: 'ADMIN' } }
+        ], canActivate: [authGuard], data: { expectedRole: 'ADMIN' }
     },
     {
 
         path: 'student-dashboard',
         component: Dashboard,
-        canActivate:[authGuard] ,
-          data:{expectedRole:'CUSTOMER'}
+        canActivate: [authGuard],
+        data: { expectedRole: 'CUSTOMER' }
     },
     {
-        path:'student-dashboard/skills/:id',
-        pathMatch:'full',
-        loadComponent:()=>{
-            return import('./modules/customer/skill-by-id/skill-by-id').then((m=>m.SkillById))
+        path: 'student-dashboard/skills/:id',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./modules/customer/skill-by-id/skill-by-id').then((m => m.SkillById))
         },
-          canActivate:[authGuard] ,
-            data:{expectedRole:'CUSTOMER'}
+        canActivate: [authGuard],
+        data: { expectedRole: 'CUSTOMER' }
     },
     {
-        path:'student-dashboard/skills',
-        pathMatch:'full',
-        loadComponent:() =>{
-            return import('./modules/customer/skills/skills').then(m=>m.Skills)
+        path: 'student-dashboard/skills',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./modules/customer/skills/skills').then(m => m.Skills)
         },
-          canActivate:[authGuard],
-            data:{expectedRole:'CUSTOMER'}
+        canActivate: [authGuard],
+        data: { expectedRole: 'CUSTOMER' }
     },
     {
-        path:'student-dashboard/my-courses',
-        pathMatch:'full',
-        loadComponent:() =>{
-            return import('./modules/customer/my-courses/my-courses').then(m=>m.MyCourses)
+        path: 'student-dashboard/my-courses',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./modules/customer/my-courses/my-courses').then(m => m.MyCourses)
         },
-          canActivate:[authGuard] ,
-            data:{expectedRole:'CUSTOMER'}
+        canActivate: [authGuard],
+        data: { expectedRole: 'CUSTOMER' }
     },
     {
-        path:'student-dashboard/update-password',
-        pathMatch:'full',
-        loadComponent:()=>{
-            return import('./shared/update-password/update-customer-password').then((m=>m.UpdateCustomerPassword))
+        path: 'student-dashboard/update-password',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./shared/update-password/update-customer-password').then((m => m.UpdateCustomerPassword))
         },
-          canActivate:[authGuard] ,
-            data:{expectedRole:'CUSTOMER'}
+        canActivate: [authGuard],
+        data: { expectedRole: 'CUSTOMER' }
+    },
+    {
+        path: 'user-logged-in-devices',
+        pathMatch: 'full',
+        loadComponent: () => {
+            return import('./shared/user-logged-in-devices/user-logged-in-devices').then((m => m.UserLoggedInDevices))
+        },
+        canActivate: [authGuard],
+        data: { expectedRole: 'ALL' }
     },
 
     { path: '**', redirectTo: '', pathMatch: 'full' }

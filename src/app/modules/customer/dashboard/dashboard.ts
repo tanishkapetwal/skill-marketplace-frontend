@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CustService } from '../service/auth.service';
 import { ActivatedRoute, ParamMap, Router, RouterLink } from '@angular/router';
@@ -24,9 +24,10 @@ export class Dashboard {
   }
   showSkill: boolean = false;
   selectedSkill: number | null = null;
-  mode = true;
-  toggleMode() {
-    this.mode = !this.mode
+  
+  devicesLoggedIn() {
+    console.log("redirecting to user logged in devices");
+    this.router.navigate(['/user-logged-in-devices'])
   }
 
   name: string = ''
@@ -59,6 +60,7 @@ export class Dashboard {
         }
       });
     this.notificationService.notifications$.subscribe(n => this.notifications = n);
+
   }
 
   searchText:string ='';
@@ -79,7 +81,7 @@ export class Dashboard {
   }
   getSkills(pageIndex:number) {
     this.custService.getSkills(pageIndex).subscribe((res:any) => {
-      this.skills = res.content;
+      this.skills = res.content.map((skill:any)=>({...skill,img:this.img[Math.floor(Math.random()*this.img.length)]}))
     })
   }
 

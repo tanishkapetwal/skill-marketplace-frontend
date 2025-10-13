@@ -45,10 +45,11 @@
           <i class="fas fa-circle text-[6px] text-red-500 mt-[3px] ml-[6px]"></i>
           }
         </div>
-        <!-- <div (click)="toggleMode()"
+
+        <div (click)="devicesLoggedIn()"
           class="bg-gray-900 text-white p-2 rounded-full w-8 h-8 flex items-center justify-center">
-          <i [class]="mode ? 'fas fa-moon' : 'fas fa-sun'"></i>
-        </div> -->
+          <i class="fas fa-bell"></i>
+        </div>
       </div>
     </div>
     <!-- Active Courses Section -->
@@ -60,7 +61,7 @@
       <div class="flex justify-center items-center space-x-8 shadow-blue-200">
         @for(skill of skills.slice(0,3); track skill.id){
         <div class="w-52 rounded-2xl px-[12px] pb-4 bg-white">
-          <img class="rounded-2xl mt-[-20px] w-full h-32" src={{getImg()}} />
+          <img class="rounded-2xl mt-[-20px] w-full h-32" src={{skill.img}} />
           <p class="p-2">{{skill.title}}</p>
           <div class="p-2 flex justify-between">
             <div class="text-xs text-gray-900">

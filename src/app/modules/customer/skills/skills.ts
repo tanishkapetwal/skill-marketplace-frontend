@@ -28,6 +28,7 @@ export class Skills implements OnInit{
    
    }
   ngOnInit(){    this.getSkills()}
+  
    getSkills(){
     this.authService.getSkills(this.pageIndex).subscribe((res)=>{
         this.totalElements=res.totalElements

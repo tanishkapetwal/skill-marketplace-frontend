@@ -15,7 +15,8 @@ import { CommonModule } from '@angular/common';
 export class Login {
 loginData = {
     'email': '',
-    'password': ''
+    'password': '',
+    'deviceId':''
   }
 
   signupData = {
@@ -62,6 +63,7 @@ loginData = {
     });
   }
   resetPassword(email:string){
+      alert("Are you sure you want to set a new password!")
     if(email===''){
       alert("Email Id can't be null!")
     }
