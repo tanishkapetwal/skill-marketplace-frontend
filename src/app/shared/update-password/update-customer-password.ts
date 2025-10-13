@@ -27,7 +27,8 @@ export class UpdateCustomerPassword {
         {
           next:()=>{
             alert('Password updated successfully!');
-            form.reset();},
+            form.reset();
+          },
           error:(err)=>console.log(err)
           
         }

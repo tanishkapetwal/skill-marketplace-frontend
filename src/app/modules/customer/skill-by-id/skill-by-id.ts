@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgIf,Location } from '@angular/common';
 import { Component} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CustService } from '../service/auth.service';
@@ -22,7 +22,7 @@ export class SkillById {
   skill:Skill={avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
     skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
   }
-  constructor(private service: CustService, private router:Router){
+  constructor(private service: CustService, private router:Router, private location: Location){
 
     const nav= this.router.getCurrentNavigation();
     const data= nav?.extras.state as {formData: any};
@@ -30,6 +30,7 @@ export class SkillById {
     if(data){
       this.skill = data.formData
     }
+    
   }
   showModal= false;
   onClick(){
@@ -39,7 +40,9 @@ export class SkillById {
   closeSkillModal(){
     this.showModal = false;
   }
-
+backIcon(){
+  this.location.back()
+}
    eventDateTime: string = '';
   onSubmit(form: NgForm, id:number): void {
     if (form.valid) {

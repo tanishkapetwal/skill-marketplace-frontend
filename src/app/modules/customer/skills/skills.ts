@@ -14,7 +14,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 export class Skills implements OnInit{
 
   skill:skillList={avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
-    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
+    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :"",img:""
   }
   skills: Array<skillList> = []
 
@@ -27,12 +27,12 @@ export class Skills implements OnInit{
     
    
    }
-  ngOnInit(){    this.getSkills()}
+  ngOnInit(){this.getSkills()}
   
    getSkills(){
     this.authService.getSkills(this.pageIndex).subscribe((res)=>{
         this.totalElements=res.totalElements
-        this.skills = res.content
+        this.skills = res.content.map((skill:any)=>({...skill,img:this.img[Math.floor(Math.random()*this.img.length)]}))
         console.log(this.skills);
        this.categories = [...new Set (this.skills.map(s=>s.skillsCategory))]
       })

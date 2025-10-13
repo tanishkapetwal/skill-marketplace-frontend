@@ -20,7 +20,7 @@ import { LinkFilterPipe } from '../../../core/pipe/link-list-pipe';
 })
 export class Dashboard {
   skill: skillList = {avgRating:0,description  :  "",id  :0,price  :  0,sellerUserName  :  "",skillsCategory  :  "",
-    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :""
+    skillsDescription  :  "",skillsName  :  "",time  :  0,title  :"",img:''
   }
   showSkill: boolean = false;
   selectedSkill: number | null = null;

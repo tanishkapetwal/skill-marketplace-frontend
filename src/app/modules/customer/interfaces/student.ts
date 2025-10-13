@@ -15,6 +15,7 @@ export interface skillList {
   skillsName: string
   time: number
   title: string
+  img:any
 }
 export interface notifications{
   orderId: number,
