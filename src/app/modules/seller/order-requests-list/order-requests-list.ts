@@ -20,9 +20,6 @@ export class OrderRequestsList {
   
     }
     SkillsList:Order[]=[];
-    statuses: string[]=[/*'PENDING',*/'ACCEPTED','REJECTED',/*'COMPLETED'*/];
-    statuses1: string[]=[/*'ACCEPTED',*/'COMPLETED'];
-    statuses2: string[]=[];
     selectedStatus:string='';
     callFunc(num:number){
      this.auth.changeStatus(num,this.selectedStatus ).subscribe({
